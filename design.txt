@@ -1,0 +1,12 @@
+Color pallettes: https://www.canva.com/colors/color-palettes/dusted-with-snow/ 
+Blue Grotto
+#0f4454
+
+Dusty Rose
+#cab5a7
+
+Ebony
+#05263b
+
+Cream
+#fcf8f5
