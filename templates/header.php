@@ -37,13 +37,13 @@
                     <?php } ?>
                     </ul>
                 </div>
-                <div>
-                <ul class="list-logins">
+                <div class="list-logins">
+                <ul>
                     <li class="nav-login">
-                        <a href="login.php" class="button">Se connecter</a>
+                        <a href="login.php" class="buttonLogin">Se connecter</a>
                     </li>
                     <li class="nav-login">
-                        <a href="login.php" class="button">S'incrire</a>
+                        <a href="login.php" class="buttonLogin">S'incrire</a>
                     </li>
                 </ul>
             </div>
