@@ -11,6 +11,7 @@ body {
     margin: 0;
     background-color: #fcf8f5;
     padding: 0;
+    width:100%
 }
 
 .navbar {
@@ -19,10 +20,11 @@ body {
     align-items: center;
     background-color: #05263b;
     color: #fcf8f5;
+    padding-bottom: 0.5rem;
 }
 
 .nav-branding {
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 1rem;
     font-family: 'Cinzel', serif;
     text-decoration: none;
@@ -68,7 +70,19 @@ body {
     border-radius: 10px;
 }
 
+/* MOBILE 500px */
 @media (max-width: 500px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width:100%;
+    }
+
     .toggle-button {
         display: flex;
     }
@@ -78,11 +92,6 @@ body {
         width: 100%;
     }
 
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
     .navbar-links ul {
         width:100%;
         flex-direction: column;
@@ -90,14 +99,12 @@ body {
 
     .navbar-links li {
         text-align: center;
-
     }
 
     .navbar-links li a {
-        padding: .5rem 1rem;
+        padding: .5rem 2rem;
         flex-direction: column;
         width:100%;
-
     }
 
     .navbar-links.active {
