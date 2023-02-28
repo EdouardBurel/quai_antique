@@ -1,5 +1,7 @@
 <?php
+    require_once('lib/session.php');
     require_once ('lib/config.php');
+    require_once('lib/pdo.php');
 
 ?>
 
@@ -10,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" type="text/javascript" defer></script>
-    <title>Document</title>
+    <title>Quai Antique - Restaurant</title>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.php" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,12 +41,16 @@
                 </div>
                 <div class="list-logins">
                 <ul>
+                <?php if(!isset($_SESSION['user'])) {?>
                     <li class="nav-login">
                         <a href="login.php" class="buttonLogin">Se connecter</a>
                     </li>
                     <li class="nav-login">
-                        <a href="login.php" class="buttonLogin">S'incrire</a>
+                        <a href="inscription.php" class="buttonLogin">S'incrire</a>
                     </li>
+                    <?php } else {?>
+                    <a href="logout.php" class="buttonLogin">Se déconnecter</a>
+                    <?php } ?>
                 </ul>
             </div>
             </nav>

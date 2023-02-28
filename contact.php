@@ -49,3 +49,7 @@
             </div>
             </nav>
         </header>
+
+<?php
+require_once('templates/footer.php');
+?>

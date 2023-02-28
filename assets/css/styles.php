@@ -37,7 +37,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #05263b;
-    color: #fcf8f5;
+    color: #cab5a7;
     padding-bottom: 0.5rem;
 }
 
@@ -247,7 +247,7 @@ ul, ol {
 }
 
 .icon-scroll {
-    background-color: black;
+    background-color: #05263b;
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -345,4 +345,17 @@ FIN EXEMPLE
 
 .online .container-texts a {
     margin-top: 50px;
+}
+
+/* Login Page */
+h1 {
+    margin-left: 50px;
+    text-decoration: underline
+}
+
+.loginEmail {
+    margin-left: 50px;
+    margin-bottom: 10px;
+    gap: 25px
+ 
 }

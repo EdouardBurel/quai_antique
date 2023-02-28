@@ -2,6 +2,11 @@
 require_once ('templates/header.php');
 ?>
 
+<?php if(!isset($_SESSION['user'])) {
+        header('location: login.php');
+    }
+?>
+
 <h1>Réservation</h1>
 
 <form method="POST" enctype="multipart/form-data">

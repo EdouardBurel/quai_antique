@@ -53,6 +53,7 @@ require_once ('templates/header.php');
             <!-- END online -->
     </main>
     <footer></footer>
-
-</body>
-</html>
+    
+<?php
+require_once('templates/footer.php');
+?>
