@@ -4,7 +4,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Gloock', serif;
+    font-family: 'Bree Serif', serif;
 }
 
 html {
@@ -174,9 +174,39 @@ ul, ol {
     align-items: center;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 975px) {
     .cover {
         flex-direction: column;
+    }
+
+    .online {
+        flex-direction: column;
+    }
+
+    .img-contact {
+        width: 55%;
+        border-radius:0.7rem;
+        flex-shrink: 0;
+        height: 250px;
+        object-fit: cover;
+        object-position: bottom;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .img-contact {
+        padding-top: 60px;
+        width: 55%;
+        border-radius: 1rem;
+        flex-shrink: 0;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    .title-2, .text-paragraphe {
+        display: flex;
+        font-size: 0.86rem;
     }
 }
 
@@ -196,10 +226,12 @@ ul, ol {
 
 .cover-introduction {
     margin-bottom: 30px;
+    font-family: 'Gloock', serif;
 }
 
 .cover-text {
     padding-right: 100px;
+    font-family: 'Gloock', serif;
     color: #0f4454;
 }
 
@@ -219,14 +251,14 @@ ul, ol {
 
 .button {
     text-transform: uppercase;
-    color: white;
+    color: #fcf8f5;
     border-radius: 20px;
     padding: 10px 20px;
     display: inline-block;
 }
 
 .button-orange {
-    background: linear-gradient(90deg, #ff3592, #ffb800 50% 100%);
+    background: linear-gradient(90deg, #05263b, #cab5a7 65% 100%);
     background-size: 200% 100%;
     background-position: right;
     transition: all 0.5s;
@@ -324,13 +356,13 @@ FIN EXEMPLE
 */
 
 .online {
-    background: linear-gradient(180deg, #202020 0% 50%, white 50% 100%);
+    background: linear-gradient(180deg, #05263b 0% 50%, #05263b 50% 100%);
 }
 
 .online .online-content {
     display: flex;
     padding: 75px 50px 50px;
-    background: linear-gradient(90deg, #ff3592,#ffb800);
+    background: linear-gradient(90deg, #cab5a7,#05263b);
 }
 
 .online img {
@@ -358,4 +390,63 @@ h1 {
     margin-bottom: 10px;
     gap: 25px
  
+}
+
+/* MENU */
+
+.menu-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-list {
+    font-size: 3rem;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem;
+}
+
+.container_menu {
+  overflow: hidden;
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
 }

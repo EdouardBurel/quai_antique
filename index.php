@@ -22,7 +22,7 @@ require_once ('templates/header.php');
                 <div class="container-texts">
                     <h2 class="title-2">Quai Antique - Le Restaurant de Chambery</h2>
                     <p class="text-paragraphe">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                    <a href="" class="button button-orange">Réserver une table</a>
+                    <a href="book.php" class="button button-orange">Réserver une table</a>
                 </div>
                 <ul class="container-images">
                     <li>
@@ -40,12 +40,19 @@ require_once ('templates/header.php');
             <!-- END Programs -->
 
             <!-- START online : La troisième section de la page -->
-        <section class="online">
+        <section class="online" id="contact-details">
             <div class="flux online-content">
-                <img src="images/launch.webp" alt="Capture d'écran du tableau de bord des cours en ligne">
+                <img class="img-contact" src="images/food1.jpg" alt="Capture d'écran du tableau de bord des cours en ligne">
                 <div class="container-texts">
                     <h2 class="title-2">Nos Horaires d'ouverture</h2>
-                    <p class="text-paragraphe">Vous avez une idée ? Vous souhaitez lancer votre start-up ou en apprendre plus sur l'entrepreneuriat ? Launch by STATION F est le programme 100% en ligne de STATION F sur tous les sujets pour se lancer ! Le programme regroupe de nombreux cours en vidéo, une large librairie d'outils avec des accès à prix réduit et une communauté pour vous aider avec votre idée. </p>
+                    <table class="text-paragraphe">
+                        <tr><th>Sunday</th><td>Closed</td></tr>
+                        <tr><th>Monday</th><td>9am - 5pm</td></tr>
+                        <tr><th>Tuesday</th><td>9am - 5pm</td></tr>
+                        <tr><th>Wednesday</th><td>9am - 5pm</td></tr>
+                        <tr><th>Thursday</th><td>9am - 5pm</td></tr>
+                    </table>
+  
                     <a href="#" class="button button-black">Nous contacter</a>
                 </div>
             </div>

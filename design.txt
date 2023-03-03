@@ -10,3 +10,8 @@ Ebony
 
 Cream
 #fcf8f5
+
+FONTS:
+font-family: 'Bree Serif', serif;
+font-family: 'Cinzel', serif;
+font-family: 'Gloock', serif;
