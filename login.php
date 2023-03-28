@@ -1,38 +1,67 @@
 <?php
-require_once ('templates/header.php');
-require_once ('lib/user.php');
+    require ('templates/header.php');
+    require_once ('lib/user.php');
 
-$errors = [];
-$messages = [];
+    if(isset($_POST['submit'])){
 
-if (isset($_POST['loginUser'])) {
-    $user = verifyUserLoginPassword($pdo, $_POST['email'],  $_POST['password']);
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
 
-    if ($user) {
-        $_SESSION['user'] = ['email' => $user['email'], 'name' => $user['name']];
-        header('location:book.php');
+     
+        $select = $pdo->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
+        $select->execute([$email, $pass]);
+        $row = $select->fetch(PDO::FETCH_ASSOC);
+     
+        if($select->rowCount() > 0){
+     
+           if($row['role'] == 'admin'){
+     
+              $_SESSION['admin_id'] = $row['id'];
+              header('location:admin.php');
+     
+           }elseif($row['role'] == 'user'){
+     
+              $_SESSION['user_id'] = $row['id'];
+              header('location:index.php');
+     
+           }else{
+              $message[] = 'no user found!';
+           }
+           
+        }else{
+           $message[] = 'incorrect email or password!';
+        }
+     
+     }
 
-    } else {
-        $errors[] = 'Email ou mot de passe incorrect';
-    }
-}
+    ?>
 
+<h1>Connexion</h1>
+
+<?php
+   if(isset($message)){
+      foreach($message as $message){
+         echo '
+         <div class="message">
+            <span>'.$message.'</span>
+         </div>
+         ';
+      }
+   }
 ?>
 
-<h1 class='loginTitle'>Connexion</h1>
-
-<form method="POST" enctype="multipart/form-data">
-    <div class="loginEmail">
+<form action="#" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control">
+        <input type="email" required name="email" placeholder="veuillez votre email" class="box form-control">
     </div>
 
-    <div class="loginEmail">
+    <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" name="password" id="password" class="form-control">
+        <input type="password" name="pass" class="form-control">
     </div>
 
-    <input type="submit" value="Connnexion" name="loginUser" class="loginEmail">
+    <input type="submit" value="Connnexion" name="submit" class="btn btn-primary">
 
 
 </form>
@@ -40,4 +69,3 @@ if (isset($_POST['loginUser'])) {
 <?php
 require_once('templates/footer.php');
 ?>
-

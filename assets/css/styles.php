@@ -450,3 +450,142 @@ h1 {
   background-color: #666;
   color: white;
 }
+
+/* ERROR SUCCESS INFO MESSAGE */
+
+.success-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  font-weight: 300;
+  font-family: 'Gloock', serif;
+}
+
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+/* INSCRIPTION FORM */
+.bg-img {
+  /* The image used */
+  background-image: url("/images/chef.jpg");
+
+  /* Control the height of the image */
+  min-height: 89vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.form-inline {
+  display: flex;
+//  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+/* Add some margins for each label */
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+/* Style the input fields */
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/* Style the submit button */
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media (max-width: 975px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px;
+  }
+}
+
+/* ADMIN */
+
+
+#table-admin {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#table-admin td, #table-admin th a {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table-admin tr:nth-child(even){background-color: #f2f2f2;}
+
+#table-admin th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D;
+  color: white;
+}
+
+#table-admin td a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tableHour, th, td {
+    padding: 1rem;
+}
+
+.footer {
+    display:grid;
+    justify-content:center;
+    background-color: #cab5a7;
+}
+
+.footerTitle {
+    display:grid;
+    justify-content:center;
+}
+
+.tableHour td {
+    margin:0.2rem;
+    padding:0.7rem;
+}
+
+.tableDay {
+    padding: 1rem;
+    margin:1 rem;
+} 

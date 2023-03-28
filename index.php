@@ -38,28 +38,7 @@ require_once ('templates/header.php');
             </div>
         </section>
             <!-- END Programs -->
-
-            <!-- START online : La troisième section de la page -->
-        <section class="online" id="contact-details">
-            <div class="flux online-content">
-                <img class="img-contact" src="images/food1.jpg" alt="Capture d'écran du tableau de bord des cours en ligne">
-                <div class="container-texts">
-                    <h2 class="title-2">Nos Horaires d'ouverture</h2>
-                    <table class="text-paragraphe">
-                        <tr><th>Sunday</th><td>Closed</td></tr>
-                        <tr><th>Monday</th><td>9am - 5pm</td></tr>
-                        <tr><th>Tuesday</th><td>9am - 5pm</td></tr>
-                        <tr><th>Wednesday</th><td>9am - 5pm</td></tr>
-                        <tr><th>Thursday</th><td>9am - 5pm</td></tr>
-                    </table>
-  
-                    <a href="#" class="button button-black">Nous contacter</a>
-                </div>
-            </div>
-        </section>
-            <!-- END online -->
     </main>
-    <footer></footer>
     
 <?php
 require_once('templates/footer.php');

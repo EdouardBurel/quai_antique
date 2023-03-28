@@ -1,8 +1,8 @@
-    <footer class="footer" id="contact-details">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h3 class="footerTitle">Nos horaires d'ouverture</h3>
+<footer>
+            <!-- START online : La troisième section de la page -->
+        <section class="online" id="contact-details">
+            <div class="container-texts" style="overflow-x:auto">
+                <h2 class="title-2">Nos Horaires d'ouverture</h2>
                     <table class="text-paragraphe">
                         <tbody class="tableHour">
                         <?php
@@ -15,7 +15,7 @@
                                     {
                                         ?>
                                         <tr>
-                                            <td class="tableDay"><?= $hour['day']; ?> </td>
+                                            <td><?= $hour['day']; ?> </td>
                                             <td><?= $hour['lunch_hours']; ?> </td>
                                             <td><?php if($hour['status'] == 'fermé'){ echo $hour['status'];} ?> </td>
                                             <td><?= $hour['dinner_hours']; ?> </td>
@@ -33,12 +33,8 @@
                         </tbody>
                     </table>
                 </div>
-
-            </div>
-
-        </div>
-
-
+        </section>
+            <!-- END online -->
     </footer>
 
 </body>
