@@ -610,3 +610,44 @@ h1 {
     padding: 1rem;
     margin:1 rem;
 } 
+
+
+.contain-img1 {
+  position: relative;
+  width: 100%;
+}
+
+.img1 {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.contain-img1:hover .img1 {
+  opacity: 0.5;
+}
+
+.contain-img1:hover .middle {
+  opacity: 1;
+}
+
+.hoverText {
+  background-color: green;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem 1rem;
+}
