@@ -193,7 +193,7 @@ ul, ol {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 975px) {
 
     .img-contact {
         padding-top: 60px;
@@ -207,6 +207,26 @@ ul, ol {
     .title-2, .text-paragraphe {
         display: flex;
         font-size: 0.86rem;
+    }
+
+    .programs .container-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px
+}
+
+    .programs .container-images li {
+        //background-color: white;
+        border-radius: 10px;
+        width: 100%;
+        //height: 130px;
+        padding: 10px;
+    }
+
+    .programs .container-images li img {
+        width: 20%;
+        height: 100%;
+        object-fit: contain;
     }
 }
 
@@ -262,6 +282,7 @@ ul, ol {
     background-size: 200% 100%;
     background-position: right;
     transition: all 0.5s;
+    margin-left:3%
 }
 
 .button-orange:hover {
@@ -296,7 +317,7 @@ ul, ol {
 }
 
 .programs .flux {
-    display: flex;
+    display: inline-block;
     gap: 1.5rem
 }
 
@@ -321,15 +342,15 @@ ul, ol {
 
 .programs .container-images {
     display: flex;
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
     gap: 25px
 }
 
 .programs .container-images li {
-    background-color: white;
+    //background-color: white;
     border-radius: 10px;
     width: 100%;
-    height: 130px;
+    //height: 130px;
     padding: 10px;
 }
 
