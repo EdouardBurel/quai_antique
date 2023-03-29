@@ -2,27 +2,98 @@
 require_once ('templates/header.php');
 ?>
 
+<div class="containerMenu">
+  <div class="titleMenu">
+    <h2>Notre menu</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit inventore officia provident cupiditate nemo eius nesciunt? Delectus incidunt minima tempore modi, adipisci itaque quidem distinctio ipsum, omnis officiis minus.</p>
+  </div>
+  <div class="listMenu">
+    <li data-filter=".Menu">Menu</li>
+    <li data-filter=".Starters">Entrées</li>
+    <li data-filter=".Main">Plats</li>
+    <li data-filter=".Desserts">Desserts</li>
+  </div>
+  <div class="contentMenu">
+    <div class="boxMenu Menu Starters">
+      <div class="imageMenu">
+        <img src="images/food1.jpg" alt="food1">
+      </div>
+      <div class="text">
+        <h3>French fries</h3>
+        <hr>
+        <section>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, totam?</section>
+        <section>18€</section>
+        <article>Catégorie: Entrées</article>
+      </div>
+    </div>
+
+    <div class="boxMenu Menu Main">
+      <div class="imageMenu">
+        <img src="images/food4.jpg" alt="food1">
+      </div>
+      <div class="text">
+        <h3>French fries</h3>
+        <hr>
+        <section>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, totam?</section>
+        <section>18€</section>
+        <article>Catégorie: Entrées</article>
+      </div>
+    </div>
+
+    <div class="boxMenu Menu Desserts">
+      <div class="imageMenu">
+        <img src="images/food5.jpg" alt="food1">
+      </div>
+      <div class="text">
+        <h3>French fries</h3>
+        <hr>
+        <section>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, totam?</section>
+        <section>18€</section>
+        <article>Catégorie: Entrées</article>
+      </div>
+    </div>
+
+    <div class="boxMenu Menu Starters">
+      <div class="imageMenu">
+        <img src="images/food5.jpg" alt="food1">
+      </div>
+      <div class="text">
+        <h3>French fries</h3>
+        <hr>
+        <section>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, totam?</section>
+        <section>18€</section>
+        <article>Catégorie: Entrées</article>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="main.js"></script>
+
+<!--
 <h1>Notre menu</h1>
 <section class="menu-container">
 <div id="myBtnContainer" class="menu-list">
   <button class="btn active" onclick="filterSelection('all')"> Nos plats</button>
-  <button class="btn" onclick="filterSelection('entrée')"> Entrées</button>
-  <button class="btn" onclick="filterSelection('animals')"> Plats</button>
-  <button class="btn" onclick="filterSelection('fruits')"> Desserts</button>
+  <button class="btn" onclick="filterSelection('starters')"> Entrées</button>
+  <button class="btn" onclick="filterSelection('main')"> Plats</button>
+  <button class="btn" onclick="filterSelection('desserts')"> Desserts</button>
 </div>
 
-<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+ The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories)
 <div class="container_menu">
-  <div class="filterDiv entrée">
-    <div>Carotte</div>
-    <img src="images/chef.jpg" style="width:10px"/>
+  <div class="filterDiv starters">
+    <div>Entrée 1</div>
+    <div>
+    <img src="./images/food7.jpg" alt="food" style="display:flex; width:3rem;">
   </div>
-  <div class="filterDiv colors fruits">Orange</div>
-  <div class="filterDiv cars">Volvo</div>
-  <div class="filterDiv colors">Red</div>
-  <div class="filterDiv cars animals">Mustang</div>
-  <div class="filterDiv colors">Blue</div>
-  <div class="filterDiv animals">Cat</div>
+  </div>
+  <div class="filterDiv starters">Entrée 2</div>
+
+  <div class="filterDiv main">Main 1</div>
+  <div class="filterDiv main">Main 2</div>
+  <div class="filterDiv desserts">Dessert 1</div>
 </div>
 </section>
 <script>
@@ -69,6 +140,7 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
+-->
 
 <?php
 require_once('templates/footer.php');

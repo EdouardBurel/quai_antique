@@ -12,3 +12,6 @@
 <h4>
     <a href="./admin/hours/index.php">Modifier Horaire</a>
 </h4>
+<h4>
+    <a href="./admin/galery/index.php">Modifier images galerie</a>
+</h4>

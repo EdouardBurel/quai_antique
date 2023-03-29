@@ -2,7 +2,7 @@
 require_once ('templates/header.php');
 ?>
 
-<?php if(!isset($_SESSION['user'])) {
+<?php if(!isset($_SESSION['user_id'])) {
         header('location: login.php');
     }
 ?>
