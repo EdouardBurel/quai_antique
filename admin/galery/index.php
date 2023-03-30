@@ -24,10 +24,11 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Jour</th>
-                                        <th>Heure d'ouverture</th>
-                                        <th>Heure de fermeture</th>
-                                        <th>Status</th>
+                                        <th>Titre</th>
+                                        <th>Description</th>
+                                        <th>prix</th>
+                                        <th>Catégorie</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -66,7 +67,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="hour-create.php" class="btn btn-primary float-end">Ajouter horaire </a>
+                        <a href="card-create.php" class="btn btn-primary float-end">Ajouter horaire </a>
                     </div>
                 </div>
             </div>

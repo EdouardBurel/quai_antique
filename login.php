@@ -29,7 +29,7 @@
            }
            
         }else{
-           $message[] = 'incorrect email or password!';
+           $message[] = 'Incorrect email or password.';
         }
      
      }

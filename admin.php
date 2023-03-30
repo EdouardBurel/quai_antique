@@ -4,6 +4,11 @@
     require_once ('lib/config.php');
     require_once('lib/pdo.php');
 
+    if(!isset($_SESSION['admin_id'])) {
+            header('location: index.php');
+        }
+
+
 ?>
 
 <main>
