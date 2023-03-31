@@ -39,8 +39,15 @@ if (isset($_POST['save_card'])) {
 
 if (!$errors) {
     $res = saveRecipe($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
+
+    if ($res) {;
+        $messages[] = 'Le plat a bien été ajouté';
+    } else {
+        $errors[] = "Une erreur s\'est produite.";
+    }
 }
 }
+
 
 ?>
 
@@ -53,16 +60,29 @@ if (!$errors) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
+    <?php foreach ($messages as $message) { ?>
+        <div class="success-msg">
+            <i class="fa fa-check"></i>
+            <?=$message; ?>
+        </div>
+    <?php } ?>
+
+    <?php foreach ($errors as $error) { ?>
+        <div class="error-msg">
+        <i class="fa fa-times-circle"></i>
+            <?=$error; ?>
+        </div>
+    <?php } ?>
+
     <div class="container mt-4">
 
-        <?php include('admin/galery/message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>Ajouter un plat
-                            <a href="index.php" class="btn btn-danger float-end">Retour</a>
+                            <a href="admin.php" class=" bttn btn float-end">Retour</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -105,5 +125,30 @@ if (!$errors) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
+  <style>
+
+    body{
+        background-color: #fcf8f5;
+    }
+
+    .card-header{
+        background-color: #0f4454;
+        color: #fcf8f5;
+    }
+    .card-body{
+        background-color: #fcf8f5;
+    }
+
+    .bttn {
+        background-color: #fcf8f5;
+        color: #05263b;
+    }
+
+    .bttn:hover{
+    background-color: #cab5a7;
+}
+
+
+  </style>
 </html>
 

@@ -11,12 +11,40 @@
 
 ?>
 
-<main>
-<h1>Heure d'ouverture</h1>
+<main div class="bodyAdmin">
+<div class="containerAdmin">
+    <div class="row">
+        <div>
+            <h1>Heure d'ouverture</h1>
+        </div>
+        <div class="box">
+            <h3>
+                <a href="./admin/hours/index.php">Modifier Horaire</a>
+            </h3>
+            <h3>
+                <a href="card-create.php">Modifier images galerie</a>
+            </h3>
+        </div>
+    </div>
+</div>
+</main>
 
-<h4>
-    <a href="./admin/hours/index.php">Modifier Horaire</a>
-</h4>
-<h4>
-    <a href="./admin/galery/index.php">Modifier images galerie</a>
-</h4>
+<?php
+require_once('templates/footer.php');
+?>
+
+<style>
+
+
+.containerAdmin {
+    display: flex;
+    padding: 3rem;
+    margin-left: 5rem;
+    min-height: 70vh;
+
+}
+
+.footer {
+    max-height: 20%;
+}
+</style>

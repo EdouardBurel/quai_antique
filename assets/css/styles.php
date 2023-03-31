@@ -84,6 +84,13 @@ body {
     display:flex
 }
 
+.buttonLogin:hover {
+    background-color: #cab5a7;
+    color: #0f4454;
+    padding: 10px 10px;
+    display:flex
+}
+
 .toggle-button {
     position: absolute;
     top: .75rem;

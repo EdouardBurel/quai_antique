@@ -7,21 +7,6 @@
 
 ?>
 
-<?php
-/*
-//Get Heroku ClearDB connection information
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-// Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-*/
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,7 +21,7 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
         <header>
@@ -68,7 +53,9 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
                         <a href="inscription.php" class="buttonLogin">S'incrire</a>
                     </li>
                     <?php } else {?>
-                    <a href="logout.php" class="buttonLogin">Se déconnecter</a>
+                        <a href="admin.php" class="buttonLogin">Espace admin</a>
+                        <a href="logout.php" class="buttonLogin">Se déconnecter</a>
+
                     <?php } ?>
                 </ul>
             </div>
