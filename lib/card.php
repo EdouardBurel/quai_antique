@@ -19,3 +19,11 @@ function saveRecipe(PDO $pdo, string $title, string $description, int $price, in
   $query->bindParam(':image', $image, PDO::PARAM_STR);
   return $query->execute();
 }
+
+function saveGalery(PDO $pdo, string $title, string|null $image) {
+  $sql = "INSERT INTO `galery` (`title`, `image`) VALUES (:title, :image);";
+  $query = $pdo->prepare($sql);
+  $query->bindParam(':title', $title, PDO::PARAM_STR);
+  $query->bindParam(':image', $image, PDO::PARAM_STR);
+  return $query->execute();
+}

@@ -238,12 +238,12 @@ ul, ol {
 }
 
 .image-office {
-    width: 55%;
-    border-radius:0.7rem;
-    flex-shrink: 0;
-    height: 250px;
+    width: 60%;
+    border-radius: 0.7rem;
+    max-height: 400px;
     object-fit: cover;
-    object-position: bottom;
+    object-position: center;
+    margin-top: 3rem;
 }
 
 .cover-title {
@@ -362,9 +362,22 @@ ul, ol {
 }
 
 .programs .container-images li img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    float: left;
+    width: 500px;
+    height: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 975px) {
+
+  .programs .container-images li img {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width:300px;
+    height: 100px;
+  }
 }
 
 /* START : Stylisation du online */
@@ -657,4 +670,13 @@ h1 {
   color: white;
   font-size: 1rem;
   padding: 1rem 1rem;
+}
+
+.{
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 30%;
+  width: 30%;
 }

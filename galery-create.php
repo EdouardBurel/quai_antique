@@ -13,14 +13,8 @@ $categories = getCategories($pdo);
 
 $errors = [];
 $messages = [];
-$card = [
-    'title' => '',
-    'description' => '',
-    'price' => '',
-    'category_id' => '',
-];
 
-if (isset($_POST['save_card'])) {
+if (isset($_POST['save_galery'])) {
     $fileName = null;
     // Si un fichier a été envoyé
     if(isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
@@ -38,7 +32,7 @@ if (isset($_POST['save_card'])) {
 
 
 if (!$errors) {
-    $res = saveRecipe($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
+    $res = saveGalery($pdo, $_POST['title'], $fileName);
 
     if ($res) {;
         $messages[] = 'Le plat a bien été ajouté';
@@ -86,7 +80,7 @@ if (!$errors) {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Ajouter un plat
+                        <h4>Ajouter une image à la galerie
                             <a href="admin.php" class=" bttn btn float-end">Retour</a>
                         </h4>
                     </div>
@@ -97,29 +91,11 @@ if (!$errors) {
                                 <input type="text" name="title" class="form-control"></input>
                             </div>
                             <div class="mb-3">
-                                <label>Description</label>
-                                <input type="text" name="description" class="form-control"></input>
-                            </div>
-                            <div class="mb-3">
-                                <label>Prix</label>
-                                <input type="text" name="price" class="form-control"></input>
-                            </div>
-                            <div class="mb-3">
-                                <label for="category" class="form-label">Catégorie</label>
-                                <select name="category_id" id="category_id" class="form-select">
-
-                                    <?php foreach ($categories as $category) { ?>
-                                        <option value="<?=$category['id']; ?>" <?php if ($card['category_id'] == $category['id']) { echo 'selected="selected"'; } ?>><?=$category['name'];?></option>
-                                    <?php } ?>
-
-                                </select>
-                            </div>
-                            <div class="mb-3">
                                 <label for="file" class="form-label">Image</label>
                                 <input type="file" name="file" id="file">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_card" class=" bttn btn btn-primary">Ajouter plat</button>
+                                <button type="submit" name="save_galery" class=" bttn btn btn-primary">Ajouter le plat à la galérie</button>
                             </div>
 
                         </form>

@@ -15,15 +15,15 @@
 <div class="containerAdmin">
     <div class="row">
         <div>
-            <h1>Heure d'ouverture</h1>
+            <h1>Espace admin</h1>
         </div>
         <div class="box">
-            <h3>
-                <a href="./admin/hours/index.php">Modifier Horaire</a>
-            </h3>
-            <h3>
-                <a href="card-create.php">Modifier images galerie</a>
-            </h3>
+            <h2>
+                <a href="./admin/hours/index.php">Horaires du restaurant</a>
+            </h2>
+            <h2>
+                <a href="/admin/galery/index.php">Galerie d'images - page d'accueil</a>
+            </h2>
         </div>
     </div>
 </div>
