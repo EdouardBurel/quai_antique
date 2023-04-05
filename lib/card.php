@@ -9,7 +9,7 @@ function getRecipeImage(string|null $image) {
 }
 
 
-function saveRecipe(PDO $pdo, string $title, string $description, int $price, int $category, string|null $image) {
+function saveCard(PDO $pdo, string $title, string $description, int $price, int $category, string|null $image) {
   $sql = "INSERT INTO `menu_card` (`title`, `description`, `price`, `category_id`, `image`) VALUES (:title, :description, :price, :category_id, :image);";
   $query = $pdo->prepare($sql);
   $query->bindParam(':title', $title, PDO::PARAM_STR);
@@ -26,4 +26,5 @@ function saveGalery(PDO $pdo, string $title, string|null $image) {
   $query->bindParam(':title', $title, PDO::PARAM_STR);
   $query->bindParam(':image', $image, PDO::PARAM_STR);
   return $query->execute();
+
 }

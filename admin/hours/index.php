@@ -29,6 +29,7 @@
                 <div class="card-header">
                     <h4>Horaires Restaurant
                         <a href="/admin.php" class=" bttn btn float-end">Retour</a>
+                        <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -105,6 +106,7 @@
         background-color: #0f4454;
         color: #fcf8f5;
         font-family: 'Cinzel', serif;
+        margin: 0.5rem;
     }
 
     .bttn:hover{

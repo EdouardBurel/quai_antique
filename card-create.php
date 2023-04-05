@@ -38,7 +38,7 @@ if (isset($_POST['save_card'])) {
 
 
 if (!$errors) {
-    $res = saveRecipe($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
+    $res = saveCard($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
 
     if ($res) {;
         $messages[] = 'Le plat a bien été ajouté';
@@ -66,14 +66,14 @@ if (!$errors) {
   </head>
   <body>
     <?php foreach ($messages as $message) { ?>
-        <div class="success-msg">
-            <i class="fa fa-check"></i>
-            <?=$message; ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Merci admin!</strong><?=$message; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php } ?>
 
     <?php foreach ($errors as $error) { ?>
-        <div class="error-msg">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <i class="fa fa-times-circle"></i>
             <?=$error; ?>
         </div>
@@ -88,25 +88,26 @@ if (!$errors) {
                     <div class="card-header">
                         <h4>Ajouter un plat
                             <a href="admin.php" class=" bttn btn float-end">Retour</a>
+                            <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label>Titre</label>
-                                <input type="text" name="title" class="form-control"></input>
+                                <input type="text" name="title" class="form-control" required></input>
                             </div>
                             <div class="mb-3">
                                 <label>Description</label>
-                                <input type="text" name="description" class="form-control"></input>
+                                <input type="text" name="description" class="form-control" required></input>
                             </div>
                             <div class="mb-3">
                                 <label>Prix</label>
-                                <input type="text" name="price" class="form-control"></input>
+                                <input type="text" name="price" class="form-control" required></input>
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="form-label">Catégorie</label>
-                                <select name="category_id" id="category_id" class="form-select">
+                                <select name="category_id" id="category_id" class="form-select" required>
 
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?=$category['id']; ?>" <?php if ($card['category_id'] == $category['id']) { echo 'selected="selected"'; } ?>><?=$category['name'];?></option>
@@ -150,6 +151,7 @@ if (!$errors) {
         background-color: #0f4454;
         color: #fcf8f5;
         font-family: 'Cinzel', serif;
+        margin: 0.5rem;
     }
 
     .bttn:hover{

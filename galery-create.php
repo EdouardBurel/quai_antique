@@ -81,7 +81,7 @@ if (!$errors) {
                 <div class="card">
                     <div class="card-header">
                         <h4>Ajouter une image à la galerie
-                            <a href="admin.php" class=" bttn btn float-end">Retour</a>
+                            <a href="admin/galery/index.php" class=" bttn btn float-end">Retour</a>
                         </h4>
                     </div>
                     <div class="card-body">

@@ -1,7 +1,5 @@
 <?php
-session_start();
 require('dbcon.php');
-require_once('tools.php');
 
 define('_RECIPES_IMG_PATH_', '/uploads/card-img/');
 define('_ASSETS_IMG_PATH_', '/assets/images/');
@@ -14,30 +12,6 @@ function getRecipeImage(string|null $image) {
     }
   }
 
-  if (isset($_POST['update_galery'])) {
-    $fileName = null;
-    // Si un fichier a été envoyé
-    if(isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
-        // la méthode getimagessize va retourner false si le fichier n'est pas une image
-        $checkImage = getimagesize($_FILES['file']['tmp_name']);
-        if ($checkImage !== false) {
-            // Si c'est une image on traite
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _RECIPES_IMG_PATH_.$fileName);
-        } else {
-            // Sinon on affiche un message d'erreur
-            $errors[] = 'Le fichier doit être une image';
-        }
-    }
-
-
-if (!$errors) {
-    $res = saveGalery($pdo, $_POST['title'], $fileName);
-
-}
-}
-
-
 ?>
 
 <!doctype html>
@@ -45,7 +19,7 @@ if (!$errors) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modifier horaire</title>
+    <title>Détails de l'horaire</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -62,8 +36,8 @@ if (!$errors) {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Modifier plat
-                            <a href="index.php" class="btn btn-danger float-end">Retour</a>
+                        <h4>Détails du plat
+                            <a href="galery-index.php" class="btn btn-danger float-end">Retour</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -78,23 +52,21 @@ if (!$errors) {
                             {
                                 $hour = mysqli_fetch_array($query_run);
                                 ?>             
-                                <form action="code.php" method="POST" enctype="multipart/form-data">
-                                    <input type='hidden' name="hour_id" value="<?= $hour['id']; ?>">
                                     <div class="mb-3">
                                         <label>Titre</label>
-                                        <input type="text" name="title" value="<?= $hour['title']; ?>" class="form-control">
+                                        <p class="form-control">
+                                            <?= $hour['title']; ?>
+                                        </p>
                                     </div>
-
+                
                                     <div class="mb-3">
                                         <label>Image</label>
-                                        <img src="<?=getRecipeImage($hour['image']); ?>" alt="<?= $hour['title'];?>" class="img">
-                                        <input type="file" name="image" id="file">
+                                        <p class="form-control">
+                                            <?= $hour['image']; ?>
+                                        </p>
                                     </div>
+                                    <img src="<?=getRecipeImage($hour['image']); ?>" alt="<?= $hour['title'];?>" class="img">
 
-                                    <div class="mb-3">
-                                        <button type="submit" name="update_galery" class="btn btn-primary">Mettre à jour le plat</button>
-                                    </div>
-                                </form>
 
                                 <?php
                             }
@@ -109,10 +81,10 @@ if (!$errors) {
             </div>
         </div>
     </div>
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <style>
+  </body>
+
+  <style>
     body{
         background-color: #cab5a7;
     }
@@ -139,6 +111,7 @@ if (!$errors) {
     
     }
 
+
     .img {
   display: block;
   margin-left: auto;
@@ -146,8 +119,8 @@ if (!$errors) {
   height: 30%;
   width: 30%;
 }
-  </style>
-    </body>
 
+
+  </style>
 </html>
 

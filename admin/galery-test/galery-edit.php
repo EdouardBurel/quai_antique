@@ -1,42 +1,6 @@
 <?php
 session_start();
 require('dbcon.php');
-require_once('tools.php');
-
-define('_RECIPES_IMG_PATH_', '/uploads/card-img/');
-define('_ASSETS_IMG_PATH_', '/assets/images/');
-
-function getRecipeImage(string|null $image) {
-    if ($image === null) {
-        return _ASSETS_IMG_PATH_.'recipe_default.jpg';
-    } else {
-        return _RECIPES_IMG_PATH_.$image;
-    }
-  }
-
-  if (isset($_POST['update_galery'])) {
-    $fileName = null;
-    // Si un fichier a été envoyé
-    if(isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
-        // la méthode getimagessize va retourner false si le fichier n'est pas une image
-        $checkImage = getimagesize($_FILES['file']['tmp_name']);
-        if ($checkImage !== false) {
-            // Si c'est une image on traite
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _RECIPES_IMG_PATH_.$fileName);
-        } else {
-            // Sinon on affiche un message d'erreur
-            $errors[] = 'Le fichier doit être une image';
-        }
-    }
-
-
-if (!$errors) {
-    $res = saveGalery($pdo, $_POST['title'], $fileName);
-
-}
-}
-
 
 ?>
 
@@ -63,40 +27,64 @@ if (!$errors) {
                 <div class="card">
                     <div class="card-header">
                         <h4>Modifier plat
-                            <a href="index.php" class="btn btn-danger float-end">Retour</a>
+                            <a href="galery-index.php" class="btn btn-danger float-end">Retour</a>
                         </h4>
                     </div>
                     <div class="card-body">
                         <?php
                         if(isset($_GET['id']))
                         {
-                            $hour_id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM galery WHERE id='$hour_id' ";
+                            $galery_id = mysqli_real_escape_string($con, $_GET['id']);
+                            $query = "SELECT * FROM galery WHERE id='$galery_id' ";
                             $query_run = mysqli_query($con, $query);
+                            //$fetch=mysqli_fetch_array($query_run);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $hour = mysqli_fetch_array($query_run);
+                                $galery = mysqli_fetch_array($query_run);
                                 ?>             
-                                <form action="code.php" method="POST" enctype="multipart/form-data">
-                                    <input type='hidden' name="hour_id" value="<?= $hour['id']; ?>">
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <input type='hidden' name="hour_id" value="<?= $galery['id']; ?>">
                                     <div class="mb-3">
                                         <label>Titre</label>
-                                        <input type="text" name="title" value="<?= $hour['title']; ?>" class="form-control">
+                                        <input type="text" name="title" value="<?= $galery['title']; ?>" class="form-control">
                                     </div>
 
                                     <div class="mb-3">
                                         <label>Image</label>
-                                        <img src="<?=getRecipeImage($hour['image']); ?>" alt="<?= $hour['title'];?>" class="img">
-                                        <input type="file" name="image" id="file">
+                                        <input type="file" name="GaleryPhoto">
+                                        <img src="/images/<?php $galery['image'] ?>" width="70px" >
                                     </div>
 
                                     <div class="mb-3">
                                         <button type="submit" name="update_galery" class="btn btn-primary">Mettre à jour le plat</button>
                                     </div>
                                 </form>
+                                <?php 
+                                if (isset($_POST['update_galery'])) {
+                                    $title=$_POST['title'];
+                                    $image=$_FILES['GaleryPhoto']['name'];
+                                    $tmp_name=$_FILES['GaleryPhoto']['tmp_name'];
+                                    $destination="images/".$image;
+                                    if ($image=!"")
+                                    {
+                                        move_uploaded_file($tmp_name, $destination);
+                                        $update="UPDATE galery SET title='$title', image='$image' WHERE id='$galery_id'";
+                                        $update_q =mysqli_query($con, $update);
+                                        header('location:galery-index.php');
+                                    } else {
 
+                                        move_uploaded_file($tmp_name, $destination);
+                                        $update="UPDATE galery SET title='$title', image='$image' WHERE id='$galery_id'";
+                                        $update_q =mysqli_query($con, $update);
+                                        header('location:galery-index.php');
+                                    
+
+                                    }
+                                }
+                                ?>
                                 <?php
+
                             }
                             else
                             {
@@ -139,13 +127,7 @@ if (!$errors) {
     
     }
 
-    .img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 30%;
-  width: 30%;
-}
+
   </style>
     </body>
 
