@@ -249,6 +249,7 @@ ul, ol {
 @media (max-width: 500px) {
     .home .home-cover .cover {
         justify-content: left;
+        background: #05263b;
     }
     .home .home-cover .cover .content {
         padding: 1rem;
@@ -413,6 +414,11 @@ ul, ol {
     color: #fcf8f5;
     font-family: 'Cinzel', serif;
     margin-inline: 1rem;
+}
+@media (max-width: 500px) {
+    .bttn {
+        margin-inline: 0.6rem;
+    }
 }
 
 .bttn:hover{
