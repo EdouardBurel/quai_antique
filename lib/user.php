@@ -1,18 +1,13 @@
 <?php
-
-
-function addUser(PDO $pdo, string $first_name, string $last_name, string $email, string $password) {
-    $sql = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`,`role` ) VALUES (:first_name, :last_name, :email, :password, :role);";
+function addBooking(PDO $pdo, string $reservation_name, int $number_people, string $reservation_date, string $hour_lunch, string $comments) {
+    $sql = "INSERT INTO `table_booking` (`reservation_name`, `number_people`, `reservation_date`,`hour_lunch`, `comments`) VALUES (:reservation_name, :number_people, :reservation_date, :hour_lunch, :comments);";
     $query = $pdo->prepare($sql);
 
-    //$password = password_hash($password, PASSWORD_DEFAULT);
-
-    $role = 'user';
-    $query->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-    $query->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-    $query->bindParam(':email', $email, PDO::PARAM_STR);
-    $query->bindParam(':password', $password, PDO::PARAM_STR);
-    $query->bindParam(':role', $role, PDO::PARAM_STR);
+    $query->bindParam(':reservation_name', $reservation_name, PDO::PARAM_STR);
+    $query->bindParam(':number_people', $number_people, PDO::PARAM_INT);
+    $query->bindParam(':reservation_date', $reservation_date, PDO::PARAM_STR);
+    $query->bindParam(':hour_lunch', $hour_lunch, PDO::PARAM_STR);
+    $query->bindParam(':comments', $comments, PDO::PARAM_STR);
     
     return $query->execute();
-}
+};

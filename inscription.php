@@ -2,27 +2,43 @@
     require_once ('lib/user.php');
     require_once('lib/session.php');
     require_once ('lib/config.php');
-
-    $pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
-
+    require_once ('lib/pdo.php');
 
     $errors = [];
     $messages = [];
-
+    
     if (isset($_POST['addUser'])) {
-        $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email=$_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $numberPeople = $_POST['numberPeople'];
+        $comments = $_POST['comments'];
 
-        if ($res) {;
-            $messages[] = 'Merci pour votre inscription';
+        $query = $pdo->prepare("INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`,`role`,`Number_People`, `Comments` ) VALUES (:first_name, :last_name, :email, :password, :role, :numberPeople, :comments)");
+       
+        $role = 'user';
+        $query->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+        $query->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->bindParam(':password', $password, PDO::PARAM_STR);
+        $query->bindParam(':role', $role, PDO::PARAM_STR);
+        $query->bindParam(':numberPeople', $numberPeople, PDO::PARAM_INT);
+        $query->bindParam(':comments', $comments, PDO::PARAM_STR);
+
+        $res = $query->execute();
+
+        if ($res) {
+            $messages[] = "Merci pour votre inscription";
         } else {
-            $errors[] = "Une erreur s\'est produite lors de votre inscription";
+            $errors[] = "Inscription échouée";
         }
  
     }
 
-    ?>
+?>
 <!doctype html>
-   <html lang="en">
+   <html lang="fr" class="htmlSubscribe">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,25 +49,14 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/styles.css">
    </head>
-      <main class="body-login">
-        <?php foreach ($messages as $message) { ?>
-        <div class="success-msg">
-            <i class="fa fa-check"></i>
-            <?=$message; ?>
-        </div>
-        <?php } ?>
-
-        <?php foreach ($errors as $error) { ?>
-            <div class="error-msg">
-            <i class="fa fa-times-circle"></i>
-                <?=$error; ?>
-            </div>
-        <?php } ?>
-         <div class="container mt-4">
-
+   <body class="bodySubsribe">
+    <main>
+    <?php include ('lib/message.php') ?>
+        <div class="container mt-4">
             <div class="row">
-               <div class="col-md-12">
+                <div class="col-md-12">
                   <div class="card">
                      <div class="card-header">
                         <h4>Inscription
@@ -61,18 +66,18 @@
                      <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
                            <div class="mb-3">
-                                <label for="first_name"><b>Prénom</b></label>
+                                <label for="first_name">Prénom</label>
                                 <input type="text" name="first_name" id="first_name" class="form-control" required>
                            </div>
 
                            <div class="mb-3">
-                                <label for="last_name"><b>Nom</b></label>
+                                <label for="last_name">Nom</label>
                                 <input type="text" name="last_name" id="last_name" class="form-control" required>
                            </div>
 
                            <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control" required>
+                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
@@ -80,8 +85,17 @@
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
 
-                           <input type="submit" value="Inscription" name="addUser" class="btn btn-primary">
+                            <div class="mb-3">
+                                <label for="numberPeople">Nombre de convives par défaut</label>
+                                <input type="number" name="numberPeople" id="numberPeople" class="form-control">
+                            </div>
 
+                            <div class="mb-3">
+                                <label for="comments">Mention des allegies</label>
+                                <input type="text" name="comments" id="comments" class="form-control">
+                            </div>
+                            
+                            <input type="submit" value="Inscription" name="addUser" class="bttn btn btn-primary">
                         </form>
                      </div>
                   </div>
@@ -89,32 +103,4 @@
             </div>
          </div>
       </main>
-  </body>
-
-<style>
-  body{
-      background-color: #cab5a7;
-  }
-
-  .card-header{
-      background-color: #05263b;
-      font-family: 'Cinzel', serif;
-      color: #fcf8f5;
-  }
-  .card-body{
-      background-color: #fcf8f5;
-      font-family: 'Bree Serif', serif;
-  }
-
-  .bttn {
-      background-color: #0f4454;
-      color: #fcf8f5;
-      font-family: 'Cinzel', serif;
-  }
-
-  .bttn:hover{
-  background-color: #cab5a7;
-  color:#0f4454;
-}
-</style>
-</html> 
+      <?php require_once('templates/footer.php') ;?>

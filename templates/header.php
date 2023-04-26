@@ -1,4 +1,5 @@
 <?php
+    ini_set('display_errors', 'off');
     require_once('lib/session.php');
     require_once ('lib/config.php');
     require_once('lib/pdo.php');
@@ -24,7 +25,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="brand-title">
+            <div class="brand-title" id="quai_antique">
                 <a href="index.php" class="nav-branding">Quai Antique</a>
             </div>
             <a href="#" class="toggle-button">
@@ -35,30 +36,30 @@
             <div class="navbar-links">
                 <ul>
                     <?php foreach ($mainMenu as $key => $value) {?>
-                    <li class="nav-link">
+                    <li>
                         <a href="<?=$key; ?>" target="_self"><?=$value ;?></a>
                     </li>
                     <?php } ?>
                     <?php if(!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id']) )   {?>
-                    <li class="nav-link">
-                        <a href="login.php" class="">Se connecter</a>
-                    </li>
-                    <li class="nav-link">
+                    <li>
                         <a href="inscription.php" class="">S'incrire</a>
+                    </li>
+                    <li>
+                        <a href="login.php" class="">Se connecter</a>
                     </li>
                     <?php } ?>
                     <?php if(isset($_SESSION['user_id']) )   {?>
-                    <li class="nav-link">
+                    <li>
                         <a href="logout.php" class="">Se déconnecter</a>
                     </li>
                     <?php } ?>
 
                     <?php if(isset($_SESSION['admin_id']) )   {?>
-                    <li class="nav-link">
+                    <li>
                         <a href="admin.php" class="">Espace admin</a>
                     </li>
-                    <li class="nav-link">
-                        <a href="logout.php" class="">Se déconnecter</a>
+                    <li>
+                        <a href="logout.php">Se déconnecter</a>
                     </li>
                     <?php } ?>
                 </ul>

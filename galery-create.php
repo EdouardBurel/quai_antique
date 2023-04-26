@@ -3,11 +3,10 @@ require_once ('lib/tools.php');
 require_once ('lib/config.php');
 require_once('lib/category.php');
 require_once('lib/card.php');
+require_once('lib/session.php');
 
 
 $pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
-
-session_start();
 
 $categories = getCategories($pdo);
 
@@ -35,9 +34,9 @@ if (!$errors) {
     $res = saveGalery($pdo, $_POST['title'], $fileName);
 
     if ($res) {;
-        $messages[] = 'Le plat a bien été ajouté';
+        $messages[] = 'Le plat a bien été ajouté'; header('Location: galeryIndex.php');
     } else {
-        $errors[] = "Une erreur s\'est produite.";
+        $errors[] = "Une erreur s\'est produite."; header('Location: galeryIndex.php');
     }
 }
 }

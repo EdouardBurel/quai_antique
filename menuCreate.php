@@ -3,11 +3,7 @@ require_once ('lib/tools.php');
 require_once ('lib/config.php');
 require_once('lib/category.php');
 require_once('lib/card.php');
-
-
-$pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
-
-session_start();
+require_once('lib/pdo.php');
 
 $categories = getCategories($pdo);
 
@@ -35,7 +31,6 @@ if (isset($_POST['save_card'])) {
             $errors[] = 'Le fichier doit être une image';
         }
     }
-
 
 if (!$errors) {
     $res = saveCard($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
@@ -80,7 +75,6 @@ if (!$errors) {
     <?php } ?>
 
     <div class="container mt-4">
-
 
         <div class="row">
             <div class="col-md-12">

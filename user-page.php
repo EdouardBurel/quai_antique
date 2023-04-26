@@ -2,19 +2,20 @@
     require_once ('lib/user.php');
     require_once('lib/session.php');
     require_once ('lib/config.php');
+    require_once ('lib/dbcon.php');
+    require_once('lib/session.php');
 
     $pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
 
 
-    if(!isset($_SESSION['admin_id'])) {
+    if(!isset($_SESSION['user_id'])) {
             header('location: index.php');
         }
-
 
 ?>
 
 <!doctype html>
-   <html lang="en">
+   <html lang="fr">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +28,13 @@
       <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
    </head>
       <main>
+
+      <?php
+
+      $user_id = $_SESSION['user_id'];
+      echo $user_id;
+//print_r($_SESSION['user_id']);
+?>
          <?php
             if(isset($message)){
                foreach($message as $message){
@@ -44,26 +52,20 @@
                <div class="col-md-12">
                   <div class="card">
                      <div class="card-header">
-                        <h2>Espace admin
+                        <h2>Espace client
                            <a href="index.php" class=" bttn btn float-end">Accueil</a>
                         </h2>
                      </div>
                      <div class="card-body">
                            <div class="mb-3">
                                 <h3>
-                                    <a href="./admin/hours/index.php">Horaires du restaurant</a>
+                                    <a href="book.php?id=<?=$_SESSION['user_id']?>">Réservez une table</a>
                                 </h3>
                            </div>
 
                            <div class="mb-3">
                                 <h3>
-                                <a href="galeryIndex.php">Gestion galerie d'images - page d'accueil</a>
-                                </h3>
-                           </div>
-
-                           <div class="mb-3">
-                                <h3>
-                                <a href="menuIndex.php">Ajouter / Supprimer plat menus - page menus</a>
+                                <a href="#">Consultez vos réservations</a>
                                 </h3>
                            </div>
                      </div>
@@ -77,7 +79,6 @@
 <style>
   body{
       background-color: #cab5a7;
-      font-family: 'Gloock', serif;
   }
 
   .card-header{
@@ -87,7 +88,7 @@
   }
   .card-body{
       background-color: #fcf8f5;
-      color: #cab5a7;
+      font-family: 'Bree Serif', serif;
   }
 
   .bttn {

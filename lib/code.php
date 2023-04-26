@@ -144,28 +144,47 @@ if(isset($_POST['save_card']))
 
 # GALLERY CODE-----------------------------------------------------
 
-
-if(isset($_POST['update_galery']))
+if(isset($_POST['delete_galery']))
 {
-    $galery_id = mysqli_real_escape_string($con, $_POST['galery_id']);
+    $galery_id = mysqli_real_escape_string($con, $_POST['delete_galery']);
 
-    $title = mysqli_real_escape_string($con, $_POST['title']);
-    $image = mysqli_real_escape_string($con, $_POST['image']);
-
-    $query = "UPDATE galery SET title='$title', image='$image'
-                WHERE id='$galery_id' ";
+    $query = "DELETE FROM galery WHERE id='$galery_id' ";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
     {
-        $_SESSION['message'] = "Horaire modifié";
-        header("Location: index.php");
+        $_SESSION['message'] = "Plat supprimé";
+        header("Location: /galeryIndex.php");
         exit(0);
     }
     else
     {
-        $_SESSION['message'] = "Une erreur s'est produite";
-        header("Location: index.php");
+        $_SESSION['message'] = "Une erreur s'est produite.";
+        header("Location: /galeryIndex.php");
+        exit(0);
+    }
+
+}
+
+# MENU CODE-----------------------------------------------------
+
+if(isset($_POST['delete_menu']))
+{
+    $galery_id = mysqli_real_escape_string($con, $_POST['delete_menu']);
+
+    $query = "DELETE FROM menu_card WHERE id='$galery_id' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Plat supprimé";
+        header("Location: /menuIndex.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Une erreur s'est produite.";
+        header("Location: /menuIndex.php");
         exit(0);
     }
 

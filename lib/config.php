@@ -1,6 +1,8 @@
 <?php
   define('_RECIPES_IMG_PATH_', 'uploads/card-img/');
-  define('_ASSETS_IMG_PATH_', 'assets/images/');
+  define('_ASSETS_IMG_PATH_', 'images/');
+  define('_RECIPES_IMG_PATH_BIS_', '../../uploads/card-img/');
+  define('_ASSETS_IMG_PATH_BIS_', '../../images/');
 
   $mainMenu = [
       'index.php' => 'Quai Antique',

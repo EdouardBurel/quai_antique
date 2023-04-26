@@ -1,68 +1,75 @@
 <?php
-require_once ('templates/header.php');
-require_once('lib/category.php');
-require_once ('lib/card.php');
+  require_once ('templates/header.php');
+  require_once('lib/category.php');
+  require_once ('lib/card.php');
 
-
-$categories = getCategories($pdo);
+  $categories = getCategories($pdo);
 
 ?>
+<main>
+  <div class="containerMenu">
+    <div class="titleMenu">
+      <h2>La Carte du Restaurant</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit inventore officia provident cupiditate nemo eius nesciunt? Delectus incidunt minima tempore modi, adipisci itaque quidem distinctio ipsum, omnis officiis minus.</p>
+    </div>
+    <div class="listMenu">
+      <li data-filter=".All">La carte</li>
+      <li style="border-right: thick solid black;"></li>
+      <li data-filter=".Entrée">Entrées</li>
+      <li data-filter=".Plat">Plats</li>
+      <li data-filter=".Dessert">Desserts</li>
+      <br> <hr>
+      <li style="border-right: thick solid black;"></li>
+      <li data-filter=".Menus">Menus</li>
+    </div>
+    <div class="contentMenu">
+      <?php
+            $query = 'SELECT * FROM menu_card';
+            $query_run = mysqli_query($con, $query);
 
-<div class="containerMenu">
-  <div class="titleMenu">
-    <h2>La Carte du Restaurant</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit inventore officia provident cupiditate nemo eius nesciunt? Delectus incidunt minima tempore modi, adipisci itaque quidem distinctio ipsum, omnis officiis minus.</p>
-  </div>
-  <div class="listMenu">
-    <li data-filter=".Entrée">Entrées</li>
-    <li data-filter=".Plat">Plats</li>
-    <li data-filter=".Dessert">Desserts</li>
-    <br>
-    <hr>
-    <li data-filter=".Menu">Menus</li>
-  </div>
-  <div class="contentMenu">
-  <?php
-          $query = 'SELECT * FROM menu_card';
-          $query_run = mysqli_query($con, $query);
-
-          if(mysqli_num_rows($query_run) > 0)
-          {
-              foreach($query_run as $card)
-              {
-          ?>
-    <div class="boxMenu Menu .<?php foreach ($categories as $category) { ?>
-                <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
-            <?php } }?>.">
-      <div class="imageMenu">
-        <img src="<?=getRecipeImage($card['image']); ?>" alt="<?= $card['title']; ?>">
+            if(mysqli_num_rows($query_run) > 0)
+            {
+                foreach($query_run as $card)
+                {
+            ?>
+      <div class="boxMenu All .<?php foreach ($categories as $category) { ?> <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
+              <?php } }?>">
+        <div class="imageMenu">
+          <img src="<?=getRecipeImage($card['image']); ?>" alt="<?= $card['title']; ?>">
+        </div>
+        <div class="text">       
+          <h3><?= $card['title']; ?> </h3>
+          <hr>
+          <section><?= $card['description']; ?></section>
+          <hr>
+          <p class><?= $card['price']; ?>€</p>
+          <article>Catégorie: <?php foreach ($categories as $category) { ?>
+          <?php if ($card['category_id'] == $category['id']) { echo $category['name']; } }?></article>
+        </div>
       </div>
-      <div class="text">
-                  
-        <h3><?= $card['title']; ?> </h3>
-        <hr>
-        <section><?= $card['description']; ?></section>
-        <hr>
-        <section><?= $card['price']; ?>€</section>
-        <article>Catégorie: <?php foreach ($categories as $category) { ?>
-                <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
-            <?php } ?>
-        <?php
-
-              }?></article>
+      <?php } } ?>
+      <div class="boxMenu Menus" style="width: 50%; justify-content:center; background-color:#cab5a7; border: solid 1px black">
+        <div class="text">       
+          <h3 style="font-size: 2rem"> Formule Menu Midi </h3>
+          <hr>
+          <section style="font-size: 1.7rem; font-family: 'Cinzel', 'serif'">Entrée + Plat + Dessert</section>
+          <hr>
+          <section style="font-size: 1.7rem; font-family: 'Cinzel', 'serif'">37€</section>
+        </div>
+      </div>
+      <div class="boxMenu Menus" style="width: 50%; justify-content:center; background-color:#cab5a7; border: solid 1px black">
+        <div class="text">       
+          <h3 style="font-size: 2rem"> Formule menu soir </h3>
+          <hr>
+          <section style="font-size: 1.7rem; font-family: 'Cinzel', 'serif'">Entrée + Plat + Dessert</section>
+          <hr>
+          <section style="font-size: 1.7rem; font-family: 'Cinzel', 'serif'">48€</section>
+        </div>
       </div>
     </div>
-    <?php }
-          }
-        ?>
-
   </div>
-
-</div>
-
-<script src="main.js"></script>
-
+</main>
 
 <?php
-require_once('templates/footer.php');
+  require_once('templates/footerMain.php');
 ?>

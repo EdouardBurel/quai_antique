@@ -12,3 +12,16 @@ if(isset($_SESSION['message'])) :
     unset($_SESSION['message']);
     endif;
 ?>
+
+<?php
+foreach ($messages as $message) { ?>
+    <div class="success-msg">
+        <i class="fa fa-check"></i>
+        <?=$message; ?>
+    </div> <?php }
+
+foreach ($errors as $error) { ?>
+    <div class="error-msg">
+        <i class="fa fa-times-circle"></i>
+        <?=$error; ?>
+    </div> <?php } ?>

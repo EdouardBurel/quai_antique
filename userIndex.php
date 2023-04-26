@@ -1,13 +1,15 @@
 <?php
-    require_once('../../lib/pdo.php');
+    require_once('lib/session.php');
+    require_once('lib/dbcon.php');
+
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Restaurant Hours</title>
+    <title>Espace client</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,19 +18,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
   </head>
   <body>
+
     <div class="container mt-4">
 
-        <?php include('message.php'); ?>
-
-
+        <?php include('lib/message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                 <div class="card-header">
-                    <h4>Horaires Restaurant
-                        <a href="/admin.php" class=" bttn btn float-end">Retour</a>
-                        <a href="/index.php" class=" bttn btn float-end">Accueil</a>
+                    <h4>Espace client - Vos réservations
+                        <a href="index.php" class=" bttn btn float-end">Accueil</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -36,37 +36,36 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Jour</th>
-                                <th>Heure d'ouverture</th>
-                                <th>Heure de fermeture</th>
-                                <th>Status</th>
+                                <th>Nom de réservation</th>
+                                <th> Nombre de personnes</th>
+                                <th>Date</th>
+                                <th>Heure</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $query = 'SELECT * FROM restaurant_hours';
+
+                                $id= $_SESSION['user_id'];
+                                $query = 'SELECT * FROM table_book';
                                 $query_run = mysqli_query($con, $query);
 
                                 if(mysqli_num_rows($query_run) > 0)
                                 {
-                                    foreach($query_run as $hour)
+                                    foreach($query_run as $table)
                                     {
-                                        ?>
+                            ?>
                                         <tr>
-                                            <td><?= $hour['day']; ?> </td>
-                                            <td><?= $hour['lunch_hours']; ?> </td>
-                                            <td ><?= $hour['dinner_hours']; ?> </td>
-                                            <td><?= $hour['status']; ?> </td>
+                                            <td><?= $table['reservation_name']; ?> </td>
+                                            <td><?= $table['number_people']; ?> </td>
+                                            <td><?= $table['reservation_date']; ?> </td>
+                                            <td><?= $table['reservation_hour']; ?> </td>
                                             <td>
-                                                <a href="hour-view.php?id=<?= $hour['id']; ?>" class="btn btn-info btn-sm">View</a>
-                                                <a href="hour-edit.php?id=<?= $hour['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                <form action="code.php" method="POST" class="d-inline">
-                                                    <button type="submit" name="delete_hour" value="<?=$hour['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
-                                                </form>
+                                                <a href="table-view.php?id=<?= $table['id']; ?>" class="btn btn-info btn-sm">Consulter</a>
+                                                <a href="galeryEdit.php?id=<?= $table['id']; ?>" class="btn btn-warning btn-sm">Modifier</a>
                                             </td>
                                         </tr>
-                                        <?php
+                            <?php
 
                                     }
                                 }
@@ -77,7 +76,7 @@
                             ?>
                         </tbody>
                     </table>
-                    <a href="hour-create.php" class="bttn btn btn-primary float-end">Ajouter horaire </a>
+                    <a href="galery-create.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
                 </div>
                         
                     </div>

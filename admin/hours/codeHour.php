@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'dbcon.php';
+require_once ('../../lib/pdo.php');
 
 if(isset($_POST['delete_hour']))
 {
