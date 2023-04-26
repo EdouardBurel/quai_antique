@@ -22,10 +22,3 @@ list.forEach((el)=>{
 })
 
 /* BOOK PAGE - HOUR SELECTION */
-
-$(document).ready(function() {
-  $("button").click(function() {
-    $("#hours").load("load-hours.php");
-  });
-});
-  

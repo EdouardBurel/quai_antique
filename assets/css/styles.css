@@ -583,6 +583,24 @@ ul, ol {
         width: 100%;
     }
 }
+@media (max-width: 500px) {  
+    .listMenu {
+        display: block;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+
+    .listMenu li{
+        margin: 0px 15px;
+        width: 100%;
+        font-weight: 600;
+        font-size: 17px;
+        cursor: pointer;
+        position: relative;
+        font-family: 'Cinzel', 'serif';
+    }
+}
 
 /*MENU - END */
 
