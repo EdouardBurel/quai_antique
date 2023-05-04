@@ -4,9 +4,8 @@ require_once ('lib/config.php');
 require_once('lib/category.php');
 require_once('lib/card.php');
 require_once('lib/session.php');
+require_once ('lib/pdo.php');
 
-
-$pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
 
 $categories = getCategories($pdo);
 
@@ -58,54 +57,40 @@ if (!$errors) {
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
   </head>
   <body>
-    <?php foreach ($messages as $message) { ?>
-        <div class="success-msg">
-            <i class="fa fa-check"></i>
-            <?=$message; ?>
-        </div>
-    <?php } ?>
+    <main>
+        <?php include ('lib/message.php') ?>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Ajouter une image à la galerie
+                                <a href="admin/galery/index.php" class=" bttn btn float-end">Retour</a>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label>Titre</label>
+                                    <input type="text" name="title" class="form-control"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="file" class="form-label">Image</label>
+                                    <input type="file" name="file" id="file">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" name="save_galery" class=" bttn btn btn-primary">Ajouter le plat à la galérie</button>
+                                </div>
 
-    <?php foreach ($errors as $error) { ?>
-        <div class="error-msg">
-        <i class="fa fa-times-circle"></i>
-            <?=$error; ?>
-        </div>
-    <?php } ?>
-
-    <div class="container mt-4">
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Ajouter une image à la galerie
-                            <a href="admin/galery/index.php" class=" bttn btn float-end">Retour</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label>Titre</label>
-                                <input type="text" name="title" class="form-control"></input>
-                            </div>
-                            <div class="mb-3">
-                                <label for="file" class="form-label">Image</label>
-                                <input type="file" name="file" id="file">
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" name="save_galery" class=" bttn btn btn-primary">Ajouter le plat à la galérie</button>
-                            </div>
-
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
-
   <style>
     body{
         background-color: #cab5a7;

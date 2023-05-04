@@ -11,16 +11,47 @@
     $errors = [];
     $messages = [];
 
-    if (isset($_POST['bookTable'])) {
-        $res = addBooking($pdo, $_POST['reservation_name'], $_POST['number_people'], $_POST['reservation_date'], $_POST['hour_lunch'], $_POST['comments']);
+    if(isset($_POST['submit'])) {
 
-        if ($res) {;
-            $messages[] = 'Merci pour votre réservation.';
+        // Sanitize the user inputs
+        $name = $_POST['name'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $guests = $_POST['guests'];
+        $comments = $_POST['comments'];
+      
+        // Check if the selected date has availability
+        $query = "SELECT SUM(guests) as total_guests FROM reservations WHERE date=:date";
+        $res = $pdo->prepare($query);
+        $res->bindParam(":date", $date);
+        $res->execute();
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        $total_guests = $row['total_guests'];
+      
+        if($total_guests + $guests <= 30) {
+      
+          // Insert the reservation into the database
+          $query = "INSERT INTO reservations (name, date, time, guests, comments) VALUES (:name, :date, :time, :guests, :comments)";
+          $res = $pdo->prepare($query);
+          $res->bindParam(":name", $name);
+          $res->bindParam(":date", $date);
+          $res->bindParam(":time", $time);
+          $res->bindParam(":guests", $guests);
+          $res->bindParam(":comments", $comments);
+          $res->execute();
+      
+          // Show a success message
+         $messages[] = "Merci pour votre réservation";
+      
         } else {
-            $errors[] = "Une erreur s\'est produite lors de votre réservation";
+      
+          // Show an error message
+          echo "<script>alert('Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.');</script>";
+      
         }
- 
-    }
+      
+      }
+    
     ?>
 <!doctype html>
    <html lang="fr" class="htmlBook">
@@ -56,32 +87,32 @@
                             <?php
                             $id = (int)$_SESSION['user_id'];
                             $query = "SELECT * FROM users WHERE id = ?";
-                            $stmt = $pdo->prepare($query);
-                            $stmt->execute([$id]);
+                            $res = $pdo->prepare($query);
+                            $res->execute([$id]);
 
-                            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $user = $res->fetch(PDO::FETCH_ASSOC);
 
-                            $name = (string)$user['first_name'];
+                            $reservationName = (string)$user['first_name'];
                             $NumberPeople = (int)$user['Number_People'];
-                            $comments = (string) $user['Comments'];
+                            $commentUser = (string) $user['Comments'];
 
 
                             echo <<<HTML
-                            <form action= "" method="POST" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="$id">
                             <div class="mb-3">
-                                <label for="reservation_name">Nom de réservation</label>
-                                <input type="text" name="reservation_name" id="reservation_name" value="$name" class="form-control" required>
+                                <label for="name">Nom de réservation</label>
+                                <input type="text" name="name" id="name" value="$reservationName" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
-                                    <label for="number_people">Nombre de couverts</label>
-                                    <input type="number" name="number_people" id="number_people" value="$NumberPeople" class="form-control" required>
+                                    <label for="guests">Nombre de couverts</label>
+                                    <input type="number" name="guests" id="guests" value="$NumberPeople" min="1" max="30" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
                                     <label for="date">Date</label>
-                                    <input type="date" name="reservation_date" id="reservation_date" class="form-control" required>
+                                    <input type="date" name="date" id="date" class="form-control" required>
                                 </div>
                             HTML;
                             ?>
@@ -89,8 +120,8 @@
                                 <?php
                                 echo <<<HTML
                                 <div class="mb-3" id="sub_meal">
-                                    <label for="hour_lunch">Heure de réservation </label>
-                                    <select type="time" id="hour_lunch" name="hour_lunch" class="form-control" required>
+                                    <label for="time">Heure de réservation </label>
+                                    <select type="time" id="time" name="time" class="form-control" required>
                                         <option disabled>MIDI</option>
                                         <option type="time">12:00</option>
                                         <option type="time">12:15</option>
@@ -112,10 +143,10 @@
 
                                 <div class="mb-3">
                                     <label for="comments">Mention des allergies / Commentaires</label>
-                                    <input type="text" name="comments" id="comments" value="$comments" class="form-control">
+                                    <input type="text" name="comments" id="comments" value="$commentUser" class="form-control">
                                 </div>
 
-                            <input type="submit" value="Réserver" name="bookTable" class="bttn btn">
+                            <input type="submit" value="Réserver" name="submit" class="bttn btn">
                             </form>
                             HTML;
                             ?>

@@ -15,9 +15,10 @@ if(isset($_SESSION['message'])) :
 
 <?php
 foreach ($messages as $message) { ?>
-    <div class="success-msg">
+    <div class=" alert success-msg" role="alert">
         <i class="fa fa-check"></i>
         <?=$message; ?>
+        <button type="button" class="btn-close btn-close-white float-end" data-bs-dismiss="alert" aria-label="Close"></button>
     </div> <?php }
 
 foreach ($errors as $error) { ?>

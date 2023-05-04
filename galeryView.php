@@ -1,5 +1,5 @@
 <?php
-require('lib/dbcon.php');
+require('lib/pdo.php');
 require_once('lib/config.php');
 require_once('lib/card.php');
 
@@ -38,13 +38,14 @@ $messages = [];
                         <?php
                         if(isset($_GET['id']))
                         {
-                            $galery_id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM galery WHERE id='$galery_id' ";
-                            $query_run = mysqli_query($con, $query);
+                            $galery_id = $_GET['id'];
+                            $query = "SELECT * FROM galery WHERE id = :galery_id";
+                            $res = $pdo->prepare($query);
+                            $res->bindParam(":galery_id", $galery_id);
+                            $res->execute();
 
-                            if(mysqli_num_rows($query_run) > 0)
-                            {
-                                $galery = mysqli_fetch_array($query_run);
+                            if ($res->rowCount() > 0) {
+                                $galery = $res->fetch(PDO::FETCH_ASSOC);
                                 ?>             
                                     <div class="mb-3">
                                         <label>Titre</label>

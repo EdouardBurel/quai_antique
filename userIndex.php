@@ -76,7 +76,7 @@
                             ?>
                         </tbody>
                     </table>
-                    <a href="galery-create.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
+                    <a href="galeryCreate.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
                 </div>
                         
                     </div>

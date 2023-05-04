@@ -1,6 +1,6 @@
 <?php
     require_once('lib/session.php');
-    require_once('lib/dbcon.php');
+    require_once('lib/pdo.php');
 
     $errors = [];
     $messages = [];
@@ -53,12 +53,11 @@
                         <tbody>
                             <?php
                                 $query = 'SELECT * FROM galery';
-                                $query_run = mysqli_query($con, $query);
+                                $res = $pdo->prepare($query);
+                                $res->execute();
 
-                                if(mysqli_num_rows($query_run) > 0)
-                                {
-                                    foreach($query_run as $galery)
-                                    {
+                                if ($res->rowCount() > 0) {
+                                    while ($galery = $res->fetch(PDO::FETCH_ASSOC)) {
                             ?>
                                         <tr>
                                             <td><?= $galery['id']; ?> </td>
@@ -83,7 +82,7 @@
                             ?>
                         </tbody>
                     </table>
-                    <a href="galery-create.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
+                    <a href="galeryCreate.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
                 </div>
                         
                     </div>

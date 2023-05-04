@@ -25,12 +25,11 @@
     <div class="contentMenu">
       <?php
             $query = 'SELECT * FROM menu_card';
-            $query_run = mysqli_query($con, $query);
+            $res = $pdo->prepare($query);
+            $res->execute();
 
-            if(mysqli_num_rows($query_run) > 0)
-            {
-                foreach($query_run as $card)
-                {
+            if ($res->rowCount() > 0) {
+              while ($card = $res->fetch(PDO::FETCH_ASSOC)) {
             ?>
       <div class="boxMenu All .<?php foreach ($categories as $category) { ?> <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
               <?php } }?>">

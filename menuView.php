@@ -41,13 +41,14 @@ $messages = [];
                         <?php
                         if(isset($_GET['id']))
                         {
-                            $galery_id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM menu_card WHERE id='$galery_id' ";
-                            $query_run = mysqli_query($con, $query);
+                            $galery_id = $_GET['id'];
+                            $query = "SELECT * FROM menu_card WHERE id = :galery_id";
+                            $res = $pdo->prepare($query);
+                            $res->bindParam(":galery_id", $galery_id);
+                            $res->execute();
 
-                            if(mysqli_num_rows($query_run) > 0)
-                            {
-                                $menu = mysqli_fetch_array($query_run);
+                            if ($res->rowCount() > 0) {
+                                $menu = $res->fetch(PDO::FETCH_ASSOC);
                                 ?>             
                                     <div class="mb-3">
                                         <label>Titre</label>

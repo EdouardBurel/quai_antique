@@ -53,12 +53,11 @@
                         <tbody>
                             <?php
                                 $query = 'SELECT * FROM menu_card';
-                                $query_run = mysqli_query($con, $query);
+                                $res = $pdo->prepare($query);
+                                $res->execute();
 
-                                if(mysqli_num_rows($query_run) > 0)
-                                {
-                                    foreach($query_run as $menu)
-                                    {
+                                if ($res->rowCount() > 0) {
+                                    while ($menu = $res->fetch(PDO::FETCH_ASSOC)) {
                             ?>
                                         <tr>
                                             <td><?= $menu['title']; ?> </td>

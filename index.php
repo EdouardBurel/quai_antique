@@ -29,10 +29,11 @@
             <div class="our-chef">
                 <?php
                 $query = 'SELECT * FROM galery';
-                $query_run = mysqli_query($con, $query);
+                $res = $pdo->prepare($query);
+                $res->execute();
                 
-                if(mysqli_num_rows($query_run) > 0) {
-                    foreach($query_run as $card) { 
+                if ($res->rowCount() > 0) {
+                    while ($card = $res->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                 <div class="item"> 
                     <div class="image">
