@@ -202,7 +202,7 @@ ul, ol {
   color:#cab5a7 ;
   font-size: 8rem;
   margin-left: 40px;
-  text-decoration: underline;
+  /*text-decoration: underline; */
   font-family: 'Gloock', serif;
 }
 
@@ -237,12 +237,12 @@ ul, ol {
     .home .home-cover .cover .content h1 {
         font-size: 5rem;
         margin-left: 20px;
-        text-decoration: underline
+        /*text-decoration: underline ¨*/
     }
     .home .home-cover .cover .content h3 {
         font-size: 3rem;
         margin-left: 20px;
-        text-decoration: underline
+        /*text-decoration: underline ¨*/
     }
 }
 
@@ -257,13 +257,13 @@ ul, ol {
     .home .home-cover .cover .content h1 {
         font-size: 3rem;
         margin-left: 20px;
-        text-decoration: underline
+        /*text-decoration: underline ¨*/
     }
 
     .home .home-cover .cover .content h3 {
         font-size: 2rem;
         margin-left: 15px;
-        text-decoration: underline
+        /*text-decoration: underline ¨*/
     }
 }
 

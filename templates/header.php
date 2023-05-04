@@ -41,7 +41,7 @@
                     <?php } ?>
                     <?php if(!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id']) )   {?>
                     <li>
-                        <a href="inscription.php" class="">S'incrire</a>
+                        <a href="inscription.php" class="">S'inscrire</a>
                     </li>
                     <li>
                         <a href="login.php" class="">Se connecter</a>
