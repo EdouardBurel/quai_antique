@@ -42,6 +42,8 @@
       
           // Show a success message
          $messages[] = "Merci pour votre réservation";
+         header('Location: index.php');
+         exit;
       
         } else {
       

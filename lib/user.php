@@ -1,4 +1,5 @@
 <?php
+/*
 function addBooking(PDO $pdo, string $reservation_name, int $number_people, string $reservation_date, string $hour_lunch, string $comments) {
     $sql = "INSERT INTO `table_booking` (`reservation_name`, `number_people`, `reservation_date`,`hour_lunch`, `comments`) VALUES (:reservation_name, :number_people, :reservation_date, :hour_lunch, :comments);";
     $query = $pdo->prepare($sql);
@@ -11,3 +12,4 @@ function addBooking(PDO $pdo, string $reservation_name, int $number_people, stri
     
     return $query->execute();
 };
+*/
