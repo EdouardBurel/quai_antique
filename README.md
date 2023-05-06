@@ -38,6 +38,7 @@ C’est pourquoi il a fait appel à l’agence web dont vous faites partie.
 - Unsplash
 - PHP 8.1.10
 - phpMyAdmin
+- Bootstrap
 - Heroku (déploiement)
 
 ## Installation en local
@@ -55,7 +56,6 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 ### Accéder à l’administration / Sécurité
 
 > L’accès au panel d’administration est sécurisé et ne peut être accessible que si un compte admin existe.
-> son rôle en repassant administrateur.
 
 >Voici les identifiants admin pour accéder au panel d'amnistration:
 -  Sur la page /login.php, ajouter l'email admin@admin.com et mot de passe: admin1
@@ -71,10 +71,10 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 ### Définition des rôles
 
-> L’administrateur dispose d'un panel d'administration pour gèrer: 
+> L’administrateur dispose d'un panel d'administration pour gérer: 
 - la galerie de photo de la page d'accueil (CRUD);
 - l'horaire du restautant
-- ajuster le nombre de convives maximum du restaurant
+- ajuster le nombre de convives maximum du restaurant.
 
 > Le client connecté peut accéder à la page de réservation pour réserver une table.
 
@@ -98,4 +98,6 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 - Mise à dispotion d'un bouton flêche permettant de scroller vers la galerie.
 - En survolant les photos de la galerie, le titre du plat s'affiche.
 - En cliquant sur le bouton “Réserver une table”, le client est redirigé vers la page book s'il est connecté.
-> Page Menus: Une fonction dynamique est affichée pour filtrer les plats et menus sans rechargement de la page :
+> Page Menus: Une fonction dynamique est affichée pour filtrer les plats et menus sans rechargement de la page.
+
+> Page Book (Réserver une table): Le restaurant est limité en nombre de convives (seuil gérer par l'administrateur). Lorsque le client choisit sa date de réservation  et clique sur la confirmation de réservation, un message d'alerte s"affiche si le restautant est complet sur le jour selectionné.
