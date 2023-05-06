@@ -69,7 +69,6 @@
                                     ?>
                                 </tbody>
                             </table>
-                            <a href="menuCreate.php" class="bttn btn btn-primary float-end">Ajouter un plat menu </a>
                         </div>     
                     </div>
                 </div>
