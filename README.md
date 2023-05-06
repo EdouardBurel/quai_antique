@@ -58,8 +58,9 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 > L’accès au panel d’administration est sécurisé et ne peut être accessible que si un compte admin existe.
 
 >Voici les identifiants admin pour accéder au panel d'amnistration:
--  Sur la page /login.php, ajouter l'email admin@admin.com et mot de passe: admin1
-
+-  Sur la page /login.php, ajouter:
+ email: admin@admin.com  
+ mot de passe: admin1
 
 ### Gestion des utilisateurs
 
@@ -73,7 +74,8 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 > L’administrateur dispose d'un panel d'administration pour gérer: 
 - la galerie de photo de la page d'accueil (CRUD);
-- l'horaire du restautant
+- l'horaire du restautant;
+- gestion de la carte du restaurant;
 - ajuster le nombre de convives maximum du restaurant.
 
 > Le client connecté peut accéder à la page de réservation pour réserver une table.
