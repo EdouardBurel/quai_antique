@@ -3,15 +3,14 @@
     <h3>Nos horaires d'ouverture</h3>
     <table class="text-paragraphe">
       <tbody class="tableHour">
-        <?php
+      <?php
             $query = 'SELECT * FROM restaurant_hours';
-            $query_run = mysqli_query($con, $query);
+            $res = $pdo->prepare($query);
+            $res->execute();
 
-            if(mysqli_num_rows($query_run) > 0)
-            {
-                foreach($query_run as $hour)
-                {
-            ?>
+            if ($res->rowCount() > 0) {
+                    while ($hour = $res->fetch(PDO::FETCH_ASSOC)) {
+          ?>
         <tr>
             <td class="tableDay"><?= $hour['day']; ?> </td>
             <td><?= $hour['lunch_hours']; ?> </td>

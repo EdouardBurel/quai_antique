@@ -1,5 +1,4 @@
 <?php
-require_once ('dbcon.php');
 require_once ('pdo.php');
 require_once ('tools.php');
 require_once ('config.php');
@@ -161,12 +160,14 @@ if (!$errors) {
 
 if(isset($_POST['delete_galery']))
 {
-    $galery_id = mysqli_real_escape_string($con, $_POST['delete_galery']);
+    $galery_id = $_POST['delete_galery'];
 
-    $query = "DELETE FROM galery WHERE id='$galery_id' ";
-    $query_run = mysqli_query($con, $query);
+    $query = "DELETE FROM galery WHERE id=:galery_id";
+    $res = $pdo->prepare($query);
+    $res->bindParam(':galery_id', $galery_id);
+    $res->execute();
 
-    if($query_run)
+    if($res)
     {
         $_SESSION['message'] = "Plat supprimé";
         header("Location: /galeryIndex.php");
@@ -185,12 +186,14 @@ if(isset($_POST['delete_galery']))
 
 if(isset($_POST['delete_menu']))
 {
-    $galery_id = mysqli_real_escape_string($con, $_POST['delete_menu']);
+    $galery_id = $_POST['delete_menu'];
 
-    $query = "DELETE FROM menu_card WHERE id='$galery_id' ";
-    $query_run = mysqli_query($con, $query);
+    $query = "DELETE FROM menu_card WHERE id=:galery_id";
+    $res = $pdo->prepare($query);
+    $res->bindParam(':galery_id', $galery_id);
+    $res->execute();
 
-    if($query_run)
+    if($res)
     {
         $_SESSION['message'] = "Plat supprimé";
         header("Location: /menuIndex.php");
