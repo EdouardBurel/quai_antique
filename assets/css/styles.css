@@ -26,6 +26,41 @@ body {
     background-color: #fcf8f5;
 }
 
+.htmlForm {
+    font-size: 100%;
+}
+
+.bodyForm{
+    background-color: #cab5a7;
+}
+
+.bodyForm td {
+    font-family: 'Poppins', sans-serif;
+}
+.bodyForm p {
+    font-family: 'Poppins', sans-serif;
+}
+.bodyForm h4 a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bodyForm input {
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-delete {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bodyForm .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+    width: 30%;
+        
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -34,6 +69,7 @@ a {
 ul, ol {
     list-style: none;
 }
+
 
 /* HEADER NAV - START */
 
@@ -390,14 +426,6 @@ ul, ol {
 
 /* INSCRIPTION FORM - START */
 
-.htmlSubscribe {
-    font-size: 100%;
-}
-
-.bodySubsribe{
-    background-color: #cab5a7;
-}
-
 .card-header{
     background-color: #05263b;
     font-family: 'Cinzel', serif;
@@ -609,22 +637,6 @@ ul, ol {
 }
 
 /*MENU - END */
-
-/* LOGIN PAGE - START */
-
-.htmlLogin {
-    font-size: 100%;
-    background-color: #cab5a7;
-}
-
-.htmlBook {
-    font-size: 100%;
-    background-color: #cab5a7;
-}
-
-.bodyBook {
-    background-color: #cab5a7;
-}
 
 /* FOOTER - START */
 

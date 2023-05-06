@@ -13,7 +13,6 @@
 
     if(isset($_POST['submit'])) {
 
-        // Sanitize the user inputs
         $name = $_POST['name'];
         $date = $_POST['date'];
         $time = $_POST['time'];
@@ -42,21 +41,17 @@
       
           // Show a success message
          $messages[] = "Merci pour votre réservation";
-         header('Location: index.php');
-         exit;
       
         } else {
-      
           // Show an error message
           echo "<script>alert('Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.');</script>";
       
         }
-      
       }
     
     ?>
 <!doctype html>
-   <html lang="fr" class="htmlBook">
+   <html lang="fr" class="htmlForm">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +65,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
       <link rel="stylesheet" href="assets/css/styles.css">
    </head>
-    <body class="bodyBook">
+    <body class="bodyForm">
         <main>
         <?php require_once ('lib/message.php'); ?>
          <div class="container mt-4">
@@ -79,10 +74,9 @@
                   <div class="card">
 
                      <div class="card-header">
-                        <h4>Réservation
-                           <a href="user-page.php" class=" bttn btn float-end">Retour</a>
+                        <h3>Réservation
                            <a href="index.php" class=" bttn btn float-end">Accueil</a>
-                        </h4>
+                        </h3>
                      </div>
 
                      <div class="card-body">
@@ -147,8 +141,9 @@
                                     <label for="comments">Mention des allergies / Commentaires</label>
                                     <input type="text" name="comments" id="comments" value="$commentUser" class="form-control">
                                 </div>
-
-                            <input type="submit" value="Réserver" name="submit" class="bttn btn">
+                                <div class="mb-3">
+                                    <button type="submit" name="submit" class="bttn btn">Réserver</button>
+                                </div>
                             </form>
                             HTML;
                             ?>

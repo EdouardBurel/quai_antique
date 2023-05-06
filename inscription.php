@@ -38,7 +38,7 @@
 
 ?>
 <!doctype html>
-   <html lang="fr" class="htmlSubscribe">
+   <html lang="fr" class="htmlForm">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +51,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="assets/css/styles.css">
    </head>
-   <body class="bodySubsribe">
+   <body class="bodyForm">
     <main>
     <?php include ('lib/message.php') ?>
         <div class="container mt-4">
@@ -59,9 +59,9 @@
                 <div class="col-md-12">
                   <div class="card">
                      <div class="card-header">
-                        <h4>Inscription
+                        <h3>Inscription
                            <a href="index.php" class=" bttn btn float-end">Retour</a>
-                        </h4>
+                        </h3>
                      </div>
                      <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
@@ -94,8 +94,9 @@
                                 <label for="comments">Mention des allegies</label>
                                 <input type="text" name="comments" id="comments" class="form-control">
                             </div>
-                            
-                            <input type="submit" value="Inscription" name="addUser" class="bttn btn btn-primary">
+                            <div class="mb-3">
+                              <button type="submit" name="addUser" class="bttn btn">S'inscrire</button>
+                           </div>
                         </form>
                      </div>
                   </div>

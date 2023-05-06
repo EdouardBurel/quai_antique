@@ -1,0 +1,86 @@
+SQL CODE:
+
+ ---------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS users (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(191),
+    last_name VARCHAR(191),
+    email VARCHAR (191),
+    password VARCHAR (260),
+    role VARCHAR(191),
+    Number_People INT(6),
+    Comments VARCHAR (141)
+);
+---------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS restaurant_hours (
+    id INT(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    day VARCHAR(20),
+    lunch_hours VARCHAR(20),
+    dinner_hours VARCHAR(20),
+    status VARCHAR(20)
+);
+
+INSERT INTO restaurant_hours (day, lunch_hours, dinner_hours, status) VALUES ('Lundi', '12:00 - 14:00', '19:00 - 22:00', 'ouvert');
+INSERT INTO restaurant_hours (day, lunch_hours, dinner_hours, status) VALUES ('Mardi', '12:00 - 14:00', '19:00 - 22:00', 'ouvert');
+INSERT INTO restaurant_hours (day, status) VALUES ('Mercredi','fermé');
+INSERT INTO restaurant_hours (day, lunch_hours, dinner_hours, status) VALUES ('Jeudi', '12:00 - 14:00', '19:00 - 22:00', 'ouvert');
+INSERT INTO restaurant_hours (day, lunch_hours, dinner_hours, status) VALUES ('Vendredi', '12:00 - 14:00', '19:00 - 22:00', 'ouvert');
+INSERT INTO restaurant_hours (day, lunch_hours, dinner_hours, status) VALUES ('Samedi', '11:30 - 14:00', '19:00 - 23:00', 'ouvert');
+INSERT INTO restaurant_hours (day, lunch_hours, status) VALUES ('Dimanche', '12:00 - 14:00', 'ouvert');
+
+ ---------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS categories (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+INSERT INTO categories (name) VALUES ('Entrée');
+INSERT INTO categories (name) VALUES ('Plat');
+INSERT INTO categories (name) VALUES ('Dessert');
+
+---------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS menu_card (
+    id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30),
+    description VARCHAR(255),
+    price FLOAT,
+    category_id int(11) NOT NULL,
+    image VARCHAR(255),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+INSERT INTO menu_card (title, description, price, category_id) VALUES ('Ragoût nordique', 'Un ragôut à la façon d\'Eowyn fortement apprécié chez les cavaliers du Rohan.', '11', '1');
+INSERT INTO menu_card (title, description, price, category_id) VALUES ('Tartiflette du Chef', 'Recette de cuisine à base de gratin de pommes de terre, d\'oignons et de lardons, le tout gratiné au Reblochon.', '23', '2');
+INSERT INTO menu_card (title, description, price, category_id) VALUES ('Mousse au chocolat', 'Authentique et délicieuse mousse au chocolat du Chef Michant', '10', '3');
+
+---------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS galery (
+    id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    image VARCHAR(50)
+);
+
+ ---------------------------------------------------------------------------------------------------------------------------
+
+# Create capacity table
+
+CREATE TABLE IF NOT EXISTS capacity (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    totalGuests int (30),
+
+);
+
+INSERT INTO capacity (totalGuests) VALUES (30);
+---------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS reservations (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR (251),
+    date date,
+    time VARCHAR (50),
+    guests INT(10),
+    comments VARCHAR (251)
+);

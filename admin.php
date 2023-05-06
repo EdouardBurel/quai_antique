@@ -2,19 +2,16 @@
     require_once ('lib/user.php');
     require_once('lib/session.php');
     require_once ('lib/config.php');
+    require_once ('lib/pdo.php');
 
-    $pdo = new PDO('mysql:dbname=edouardburel_quai-antique;host=mysql-edouardburel.alwaysdata.net', '302132_ecf2023', 'Ecf-2023');
-
-
+   // SECURE ACCESS TO ADMIN PAGE
     if(!isset($_SESSION['admin_id'])) {
             header('location: index.php');
         }
-
-
 ?>
 
 <!doctype html>
-   <html lang="en">
+   <html lang="fr" class="htmlForm">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,19 +22,10 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="/assets/css/styles.css">
    </head>
+   <body class="bodyForm">
       <main>
-         <?php
-            if(isset($message)){
-               foreach($message as $message){
-                  echo '
-                  <div class="message">
-                     <span>'.$message.'</span>
-                  </div>
-                  ';
-               }
-            }
-         ?>
          <div class="container mt-4">
 
             <div class="row">
@@ -50,21 +38,26 @@
                      </div>
                      <div class="card-body">
                            <div class="mb-3">
-                                <h3>
-                                    <a href="./admin/hours/index.php">Horaires du restaurant</a>
-                                </h3>
+                                <h4>
+                                    <a href="./admin/hours/hourIndex.php">Horaires du restaurant</a>
+                                </h4>
                            </div>
 
                            <div class="mb-3">
-                                <h3>
+                                <h4>
                                 <a href="galeryIndex.php">Gestion galerie d'images - page d'accueil</a>
-                                </h3>
+                                </h4>
                            </div>
 
                            <div class="mb-3">
-                                <h3>
+                                <h4>
                                 <a href="menuIndex.php">Ajouter / Supprimer plat menus - page menus</a>
-                                </h3>
+                                </h4>
+                           </div>
+                           <div class="mb-3">
+                                <h4>
+                                <a href="maxCapacity.php">Définir le seuil de convives maximum</a>
+                                </h4>
                            </div>
                      </div>
                   </div>
@@ -72,34 +65,4 @@
             </div>
          </div>
       </main>
-  </body>
-
-<style>
-  body{
-      background-color: #cab5a7;
-      font-family: 'Gloock', serif;
-  }
-
-  .card-header{
-      background-color: #05263b;
-      font-family: 'Cinzel', serif;
-      color: #fcf8f5;
-  }
-  .card-body{
-      background-color: #fcf8f5;
-      color: #cab5a7;
-  }
-
-  .bttn {
-      background-color: #0f4454;
-      color: #fcf8f5;
-      font-family: 'Cinzel', serif;
-      margin: 0.5rem;
-  }
-
-  .bttn:hover{
-  background-color: #cab5a7;
-  color:#0f4454;
-}
-</style>
-</html>
+      <?php require_once('templates/footer.php') ;?>

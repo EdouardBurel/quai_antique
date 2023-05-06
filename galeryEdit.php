@@ -56,7 +56,7 @@ if(isset($_POST['update_galery']))
 ?>
 
 <!doctype html>
-<html lang="fr" style="font-size: 100%;">
+<html lang="fr" class="htmlForm">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +69,7 @@ if(isset($_POST['update_galery']))
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
-  <body>
+  <body class="bodyForm">
     <main>
     <?php include ('lib/message.php') ?>
         <div class="container mt-4">
@@ -77,10 +77,10 @@ if(isset($_POST['update_galery']))
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Modifier plat galerie
+                            <h3>Modifier plat galerie
                                 <a href="galeryIndex.php" class=" bttn btn float-end">Retour</a>
                                 <a href="index.php" class=" bttn btn float-end">Accueil</a>
-                            </h4>
+                            </h3>
                         </div>
                         <div class="card-body">
                             <?php
@@ -134,41 +134,4 @@ if(isset($_POST['update_galery']))
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <style>
-    body{
-        background-color: #cab5a7;
-    }
-
-    .card-header{
-        background-color: #05263b;
-        font-family: 'Cinzel', serif;
-        color: #fcf8f5;
-    }
-    .card-body{
-        background-color: #fcf8f5;
-        font-family: 'Bree Serif', serif;
-    }
-
-    .bttn {
-        background-color: #0f4454;
-        color: #fcf8f5;
-        font-family: 'Cinzel', serif;
-        margin: 0.5rem;
-    }
-
-    .bttn:hover{
-    background-color: #cab5a7;
-    color:#0f4454;
-    }
-
-    .img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 30%;
-    width: 30%;
-    }
-  </style>
-  </body>
-</html>
+    <?php require_once('templates/footer.php') ;?>

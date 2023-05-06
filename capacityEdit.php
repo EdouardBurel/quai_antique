@@ -1,14 +1,30 @@
 <?php
+require_once('lib/session.php');
+require_once ('lib/tools.php');
 require('lib/pdo.php');
 require_once('lib/config.php');
-require_once('lib/category.php');
 require_once('lib/card.php');
-
-$categories = getCategories($pdo);
 
 $errors = [];
 $messages = [];
 
+if(isset($_POST['update_capacity']))
+{
+    $capacity_id = $_POST['capacity_id'];
+    $totalGuests= (int)$_POST['totalGuests'];
+
+    $query= "UPDATE capacity SET totalGuests=:totalGuests WHERE id=:capacity_id";
+    $res = $pdo->prepare($query);
+    $res->bindParam(":totalGuests", $totalGuests);
+    $res->bindParam(":capacity_id", $capacity_id); // add this line
+    $res->execute();
+
+    if ($res) {
+        $messages[] = "Mise à jour réussie";
+    } else {
+        $errors[] = "Mise à jour échouée";
+    }
+}
 ?>
 
 <!doctype html>
@@ -16,7 +32,7 @@ $messages = [];
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Détails du plat menu</title>
+    <title>Modifier plat galerie</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,59 +43,41 @@ $messages = [];
   </head>
   <body class="bodyForm">
     <main>
+    <?php include ('lib/message.php') ?>
         <div class="container mt-4">
-            <?php include('lib/message.php'); ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Détails du plat menu
-                                <a href="menuIndex.php" class="bttn btn btn float-end">Retour</a>
+                            <h3>Modifier le nombre de convives
+                                <a href="maxCapacity.php" class=" bttn btn float-end">Retour</a>
+                                <a href="index.php" class=" bttn btn float-end">Accueil</a>
                             </h3>
                         </div>
                         <div class="card-body">
                             <?php
                             if(isset($_GET['id']))
                             {
-                                $galery_id = $_GET['id'];
-                                $query = "SELECT * FROM menu_card WHERE id = :galery_id";
+                                $capacity_id = $_GET['id'];
+                                $query = "SELECT * FROM capacity WHERE id = :capacity_id";
                                 $res = $pdo->prepare($query);
-                                $res->bindParam(":galery_id", $galery_id);
+                                $res->bindParam(":capacity_id", $capacity_id);
                                 $res->execute();
 
                                 if ($res->rowCount() > 0) {
-                                    $menu = $res->fetch(PDO::FETCH_ASSOC);
+                                    $capacity = $res->fetch(PDO::FETCH_ASSOC);
                                     ?>             
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        <input type='hidden' name="capacity_id" value="<?= $capacity['id']; ?>">
                                         <div class="mb-3">
-                                            <label>Titre</label>
-                                            <p class="form-control">
-                                                <?= $menu['title']; ?>
-                                            </p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Description</label>
-                                            <p class="form-control">
-                                                <?= $menu['description']; ?>
-                                            </p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Prix</label>
-                                            <p class="form-control">
-                                                <?= $menu['price'];?>€
-                                            </p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Catégorie</label>
-                                            <p class="form-control">
-                                            <?php foreach ($categories as $category) { ?>
-                                                <?php if ($menu['category_id'] == $category['id']) { echo $category['name']; } }?>
-                                            </p>
+                                            <label>Nombre de convives maximum</label>
+                                            <input type="number" name="totalGuests" value="<?= $capacity['totalGuests']; ?>" class="form-control" min=1>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>Image</label>
+                                            <button type="submit" name="update_capacity" class="bttn btn btn-primary">Mettre à jour</button>
                                         </div>
-                                        <img src="<?=getRecipeImage($menu['image']); ?>" alt="<?= $menu['title'];?>" class="img">
+                                    </form>
 
                                     <?php
                                 }
