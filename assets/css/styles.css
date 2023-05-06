@@ -479,6 +479,13 @@ ul, ol {
 
 }
 
+.containerMenu a {
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    font-family: 'Gloock', serif;
+
+}
+
 .containerMenu h3 {
     font-family: 'Gloock', serif;
 }

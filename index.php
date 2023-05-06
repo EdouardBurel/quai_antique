@@ -13,7 +13,7 @@
                             <div class="content">
                                 <h3>Quai Antique - Restaurant Chambery</h3>
                                 <h1>Chef Arnaud Michaud</h1>
-                                <a href="#gallery-pictures" class="icon-scroll" >
+                                <a href="#galery-pictures" class="icon-scroll" >
                                     <img src="images/arrow.svg" alt="Cliquez ici pour accéder à la section ...">
                                 </a>
                             </div>
@@ -25,7 +25,7 @@
         <!-- END Cover -->
 
         <!-- START Galery : 2nd section of page -->
-        <section id="gallery-pictures">
+        <section id="galery-pictures">
             <div class="our-chef">
                 <?php
                 $query = 'SELECT * FROM galery';

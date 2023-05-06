@@ -22,6 +22,7 @@
       <li style="border-right: thick solid black;"></li>
       <li data-filter=".Menus">Menus</li>
     </div>
+    <a href="book.php" class="button button-book" style="font-size: 1.5rem;margin: 1.5rem;font-family: 'Gloock', serif;padding: 10px 20px;">Réserver une table</a>
     <div class="contentMenu">
       <?php
             $query = 'SELECT * FROM menu_card';
