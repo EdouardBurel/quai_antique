@@ -67,7 +67,7 @@
                         <form method="POST" enctype="multipart/form-data">
                            <div class="mb-3">
                               <label for="email" class="form-label">Email</label>
-                              <input type="email" required name="email" placeholder="veuillez votre email" class="box form-control">
+                              <input type="email" required name="email" class="box form-control">
                            </div>
 
                            <div class="mb-3">
