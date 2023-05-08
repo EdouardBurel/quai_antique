@@ -57,6 +57,8 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 > L’accès au panel d’administration est sécurisé et ne peut être accessible que si un compte admin existe.
 
+![code-extract](images/code-extract.png)
+
 >Voici les identifiants admin pour accéder au panel d'amnistration:
 -  Sur la page /login.php, ajouter:
  email: admin@admin.com  
