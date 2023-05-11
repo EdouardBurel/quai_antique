@@ -2,13 +2,13 @@
 
 ## _Présentation du projet_
 
-Le Chef Arnaud Michant aime passionnément les produits - et producteurs - de la Savoie. C’est pourquoi il a décidé d’ouvrir son troisième restaurant dans ce département. :man_cook:
+:man_cook: Le Chef Arnaud Michant aime passionnément les produits - et producteurs - de la Savoie. C’est pourquoi il a décidé d’ouvrir son troisième restaurant dans ce département.
 Le Quai Antique sera installé à Chambéry et proposera au déjeuner comme au dîner une expérience gastronomique, à travers une cuisine sans artifice.
 Plus encore que ses deux autres restaurants, Arnaud Michant le voit comme une promesse d’un voyage dans son univers culinaire.
 Lors de l’inauguration de son deuxième établissement, le chef Michant a pu constater l’impact positif que pouvait avoir un bon site web sur son chiffre d’affaires. 
 C’est pourquoi il a fait appel à l’agence web dont vous faites partie.
 
->Dans le cadre de cette mission qui vous est affectée, vous aurez à créer une application web vitrine pour le Quai Antique avec ce goût de la qualité que recherche Arnaud Michant
+>Dans le cadre de cette mission qui vous est affectée, vous aurez à créer une application web vitrine pour le Quai Antique avec ce goût de la qualité que recherche Arnaud Michant.
 
 
 ### Lien de la version en ligne du projet
@@ -75,7 +75,7 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 ### Définition des rôles
 
 > L’administrateur dispose d'un panel d'administration pour gérer: 
-- la galerie de photo de la page d'accueil (CRUD);
+- la galerie d'images de la page d'accueil (CRUD);
 - l'horaire du restautant;
 - gestion de la carte du restaurant;
 - ajuster le nombre de convives maximum du restaurant.
@@ -94,6 +94,14 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 > Le visiteur peut filtrer les plats en fonction de la catégorie.
 > La page présente également une catégorie formule menu (midi ou soir).
+
+### Compréhension et Structure d'arborescence logique
+Le création de l'application se compose de plusieurs dossiers formant l'arborescence ci-dessous:
+- Le fichier index.php s'agit de la page principale
+- Le <ins>dossier admin</ins> regroupe toutes les fonctionnalités pour le panel d'amnistration
+- Le dossier assets s'agit du CSS de l'application
+
+
 
 
 ### Fonctionnalités application
