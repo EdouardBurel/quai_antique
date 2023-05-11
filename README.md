@@ -97,16 +97,17 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 ### Compréhension et Structure d'arborescence logique
 Le création de l'application se compose de plusieurs dossiers formant l'arborescence ci-dessous:
-- Le fichier index.php s'agit de la page principale
-- Le <ins>dossier admin</ins> regroupe toutes les fonctionnalités pour le panel d'amnistration
-- Le dossier assets s'agit du CSS de l'application
+- Le <ins>dossier admin</ins> regroupe toutes les fonctionnalités pour le panel d'amnistration;
+- Le <ins>dossier assets</ins> s'agit du CSS de l'application;
+- Le <ins>dossier lib</ins>regroupe l'ensemble du codage reparti par section ;
+- Le <ins>fichier index.php</ins> s'agit de la page principale.
 
 
 
 
 ### Fonctionnalités application
 
-> Page d'accueil:
+> <ins>Page d'accueil</ins>:
 - Mise à dispotion d'un bouton flêche permettant de scroller vers la galerie.
 - En survolant les photos de la galerie, le titre du plat s'affiche.
 - En cliquant sur le bouton “Réserver une table”, le client est redirigé vers la page book s'il est connecté.
