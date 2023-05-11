@@ -31,7 +31,7 @@
          }elseif($res['role'] == 'user'){
    
             $_SESSION['user_id'] = $res['id'];
-            header('location:book.php');
+            header('location:/book.php');
 
          }
       }
