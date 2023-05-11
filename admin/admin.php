@@ -1,7 +1,7 @@
 <?php
-    require_once('lib/session.php');
-    require_once ('lib/config.php');
-    require_once ('lib/pdo.php');
+    require_once('../lib/session.php');
+    require_once ('../lib/config.php');
+    require_once ('../lib/pdo.php');
 
    // SECURE ACCESS TO ADMIN PAGE
     if(!isset($_SESSION['admin_id'])) {
@@ -32,30 +32,30 @@
                   <div class="card">
                      <div class="card-header">
                         <h2>Espace admin
-                           <a href="index.php" class=" bttn btn float-end">Accueil</a>
+                           <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                         </h2>
                      </div>
                      <div class="card-body">
                            <div class="mb-3">
                                 <h4>
-                                    <a href="./admin/hours/hourIndex.php">Horaires du restaurant</a>
+                                    <a href="hours/hourIndex.php">Horaires du restaurant</a>
                                 </h4>
                            </div>
 
                            <div class="mb-3">
                                 <h4>
-                                <a href="galeryIndex.php">Gestion galerie d'images - page d'accueil</a>
+                                <a href="galery/galeryIndex.php">Gestion galerie d'images - page d'accueil</a>
                                 </h4>
                            </div>
 
                            <div class="mb-3">
                                 <h4>
-                                <a href="menuIndex.php">Ajouter / Supprimer plat menus - page menus</a>
+                                <a href="menus/menuIndex.php">Ajouter / Supprimer plat menus - page menus</a>
                                 </h4>
                            </div>
                            <div class="mb-3">
                                 <h4>
-                                <a href="maxCapacity.php">Définir le seuil de convives maximum</a>
+                                <a href="capacity/maxCapacity.php">Définir le seuil de convives maximum</a>
                                 </h4>
                            </div>
                      </div>
@@ -64,4 +64,4 @@
             </div>
          </div>
       </main>
-      <?php require_once('templates/footer.php') ;?>
+      <?php require_once('../templates/footer.php') ;?>

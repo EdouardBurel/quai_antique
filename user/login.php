@@ -1,7 +1,7 @@
 <?php
-    require_once('lib/session.php');
-    require_once ('lib/config.php');
-    require_once ('lib/pdo.php');
+    require_once('../lib/session.php');
+    require_once ('../lib/config.php');
+    require_once ('../lib/pdo.php');
 
     $errors = [];
     $messages = [];
@@ -26,7 +26,7 @@
          if($res['role'] == 'admin'){
      
             $_SESSION['admin_id'] = $res['id'];
-            header('location:admin.php');
+            header('location:admin/admin.php');
    
          }elseif($res['role'] == 'user'){
    
@@ -49,18 +49,18 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="/assets/css/styles.css">
    </head>
    <body class="bodyForm">
     <main>
-    <?php include ('lib/message.php') ?>
+    <?php include ('../lib/message.php') ?>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
                   <div class="card">
                      <div class="card-header">
                         <h3>Connexion
-                           <a href="index.php" class=" bttn btn float-end">Retour</a>
+                           <a href="/index.php" class=" bttn btn float-end">Retour</a>
                         </h3>
                      </div>
                      <div class="card-body">
@@ -78,7 +78,7 @@
                               <button type="submit" name="submit" class="bttn btn">Connexion</button>
                            </div>
                            <span style="padding: 1rem; display:block">Vous n'avez pas encore un compte ?
-                           <a href="inscription.php" style="color: #0f4454; text-decoration: underline">Inscription</a> 
+                           <a href="/inscription.php" style="color: #0f4454; text-decoration: underline">Inscription</a> 
                         </span>
                         </form>
                      </div>
@@ -87,4 +87,4 @@
             </div>
          </div>
       </main>
-      <?php require_once('templates/footer.php') ;?>
+      <?php require_once('../templates/footer.php') ;?>

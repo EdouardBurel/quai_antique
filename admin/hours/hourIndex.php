@@ -28,7 +28,7 @@
                     <div class="card">
                     <div class="card-header">
                         <h3>Horaires Restaurant
-                            <a href="/admin.php" class=" bttn btn float-end">Retour</a>
+                            <a href="../admin.php" class=" bttn btn float-end">Retour</a>
                             <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                         </h3>
                     </div>
@@ -60,7 +60,7 @@
                                         <td>
                                             <a href="hourView.php?id=<?= $hour['id']; ?>" class="btn btn-info btn-sm">View</a>
                                             <a href="hourEdit.php?id=<?= $hour['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="../../lib/code.php" method="POST" class="d-inline">
+                                            <form action="../../lib/hour.php" method="POST" class="d-inline">
                                                 <button type="submit" name="delete_hour" value="<?=$hour['id']; ?>" class="btn-delete btn btn-danger btn-sm">Delete</a>
                                             </form>
                                         </td>

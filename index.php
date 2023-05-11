@@ -1,7 +1,7 @@
 <?php
     require_once ('templates/header.php');
     require_once('lib/category.php');
-    require_once ('lib/card.php');
+    require_once ('lib/menuCard.php');
 ?>
     <main>
         <!-- START Cover : 1st section Page -->

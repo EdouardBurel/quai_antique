@@ -1,6 +1,6 @@
 <?php
-    require_once('lib/session.php');
-    require_once('lib/pdo.php');
+    require_once('../../lib/session.php');
+    require_once('../../lib/pdo.php');
 
     $errors = [];
     $messages = [];
@@ -27,15 +27,15 @@
   </head>
   <body class="bodyForm">
     <main>
-        <?php include('lib/message.php'); ?>
+        <?php include('../../lib/message.php'); ?>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                     <div class="card-header">
                         <h3>Galerie page d'accueil
-                            <a href="admin.php" class=" bttn btn float-end">Retour</a>
-                            <a href="index.php" class=" bttn btn float-end">Accueil</a>
+                            <a href="../admin.php" class=" bttn btn float-end">Retour</a>
+                            <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -65,7 +65,7 @@
                                                 <td>
                                                     <a href="galeryView.php?id=<?= $galery['id']; ?>" class="btn btn-info btn-sm">View</a>
                                                     <a href="galeryEdit.php?id=<?= $galery['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                    <form action="lib/code.php" method="POST" class="d-inline">
+                                                    <form action="../../lib/galery.php" method="POST" class="d-inline">
                                                         <button type="submit" name="delete_galery" value="<?=$galery['id']; ?>" class="btn-delete btn btn-danger btn-sm">Delete</a>
                                                     </form>
                                                 </td>
@@ -90,5 +90,5 @@
             </div>
         </div>
     </main>
-    <?php require_once('templates/footer.php') ;?>
+    <?php require_once('../../templates/footer.php') ;?>
 

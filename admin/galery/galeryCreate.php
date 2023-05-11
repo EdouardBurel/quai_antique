@@ -1,10 +1,10 @@
 <?php
-require_once ('lib/tools.php');
-require_once ('lib/config.php');
-require_once('lib/category.php');
-require_once('lib/card.php');
-require_once('lib/session.php');
-require_once ('lib/pdo.php');
+require_once ('../../lib/tools.php');
+require_once ('../../lib/config.php');
+require_once('../../lib/category.php');
+require_once('../../lib/galery.php');
+require_once('../../lib/session.php');
+require_once ('../../lib/pdo.php');
 
 
 $categories = getCategories($pdo);
@@ -21,7 +21,7 @@ if (isset($_POST['save_galery'])) {
         if ($checkImage !== false) {
             // Si c'est une image on traite
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _RECIPES_IMG_PATH_.$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../uploads/card-img/'.$fileName);
         } else {
             // Sinon on affiche un message d'erreur
             $errors[] = 'Le fichier doit être une image';
@@ -59,7 +59,7 @@ if (!$errors) {
   </head>
   <body class="bodyForm">
     <main>
-        <?php include ('lib/message.php') ?>
+        <?php include ('../../lib/message.php') ?>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
@@ -90,5 +90,5 @@ if (!$errors) {
             </div>
         </div>
     </main>
-    <?php require_once('templates/footer.php') ;?>
+    <?php require_once('../../templates/footer.php') ;?>
 

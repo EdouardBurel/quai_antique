@@ -28,7 +28,7 @@ $messages = [];
                             </h3>
                         </div>
                         <div class="card-body">
-                            <form action="../../lib/code.php" method="POST">
+                            <form action="../../lib/hour.php" method="POST">
                                 <div class="mb-3">
                                     <label>Jour de la semaine</label>
                                     <select type="text" name="day" class="form-select">

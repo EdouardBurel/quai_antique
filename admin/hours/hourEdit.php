@@ -40,8 +40,8 @@
 
                                 if ($res->rowCount() > 0) {
                                     $hour = $res->fetch(PDO::FETCH_ASSOC);
-                                    ?>            
-                                    <form action="../../lib/code.php" method="POST">
+                            ?>            
+                                    <form action="../../lib/hour.php" method="POST">
                                         <input type='hidden' name="hour_id" value="<?= $hour['id']; ?>">
                                         <div class="mb-3">
                                             <label>Jour</label>

@@ -1,9 +1,9 @@
 <?php
-require_once ('lib/tools.php');
-require_once ('lib/config.php');
-require_once('lib/category.php');
-require_once('lib/card.php');
-require_once('lib/pdo.php');
+require_once ('../../lib/tools.php');
+require_once ('../../lib/config.php');
+require_once('../../lib/category.php');
+require_once('../../lib/menuCard.php');
+require_once('../../lib/pdo.php');
 
 $categories = getCategories($pdo);
 
@@ -25,7 +25,7 @@ if (isset($_POST['save_card'])) {
         if ($checkImage !== false) {
             // Si c'est une image on traite
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _RECIPES_IMG_PATH_.$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../uploads/card-img/'.$fileName);
         } else {
             // Sinon on affiche un message d'erreur
             $errors[] = 'Le fichier doit être une image';
@@ -33,7 +33,7 @@ if (isset($_POST['save_card'])) {
     }
 
 if (!$errors) {
-    $res = saveCard($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
+    $res = saveMenuCard($pdo, $_POST['title'], $_POST['description'], $_POST['price'], $_POST['category_id'], $fileName);
 
     if ($res) {;
         $messages[] = 'Le plat a bien été ajouté';
@@ -57,11 +57,11 @@ if (!$errors) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
   <body class="bodyForm">
     <main>
-        <?php include('lib/message.php'); ?>
+        <?php include('../../lib/message.php'); ?>
         <div class="container mt-4">
 
             <div class="row">
@@ -69,7 +69,7 @@ if (!$errors) {
                     <div class="card">
                         <div class="card-header">
                             <h3>Ajouter un plat
-                                <a href="admin.php" class=" bttn btn float-end">Retour</a>
+                                <a href="../admin.php" class=" bttn btn float-end">Retour</a>
                                 <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                             </h3>
                         </div>
@@ -112,5 +112,5 @@ if (!$errors) {
             </div>
         </div>
     </main>
-    <?php require_once('templates/footer.php') ;?>
+    <?php require_once('../../templates/footer.php') ;?>
 

@@ -44,21 +44,21 @@
                         <a href="inscription.php" class="">S'inscrire</a>
                     </li>
                     <li>
-                        <a href="login.php" class="">Se connecter</a>
+                        <a href="user/login.php" class="">Se connecter</a>
                     </li>
                     <?php } ?>
                     <?php if(isset($_SESSION['user_id']) )   {?>
                     <li>
-                        <a href="logout.php" class="">Se déconnecter</a>
+                        <a href="lib/logout.php" class="">Se déconnecter</a>
                     </li>
                     <?php } ?>
 
                     <?php if(isset($_SESSION['admin_id']) )   {?>
                     <li>
-                        <a href="admin.php" class="">Espace admin</a>
+                        <a href="admin/admin.php" class="">Espace admin</a>
                     </li>
                     <li>
-                        <a href="logout.php">Se déconnecter</a>
+                        <a href="lib/logout.php">Se déconnecter</a>
                     </li>
                     <?php } ?>
                 </ul>

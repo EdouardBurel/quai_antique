@@ -28,7 +28,7 @@
   <div class="footer-menu">
     <ul class="f-menu">
       <li><a href="/index.php">Quai Antique</a></li>
-      <li><a href="/menu.php">Menus</a></li>
+      <li><a href="/user/menu.php">Menus</a></li>
       <li><a href="/book.php">Réserver une table</a></li>
     </ul>
   </div>

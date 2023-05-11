@@ -1,9 +1,9 @@
 <?php
-require_once('lib/session.php');
-require_once ('lib/tools.php');
-require('lib/pdo.php');
-require_once('lib/config.php');
-require_once('lib/card.php');
+require_once('../../lib/session.php');
+require_once ('../../lib/tools.php');
+require('../../lib/pdo.php');
+require_once('../../lib/config.php');
+require_once('../../lib/menuCard.php');
 
 $errors = [];
 $messages = [];
@@ -25,7 +25,7 @@ if(isset($_POST['update_galery']))
     if ($_FILES['new_img']['error'] == 0)
     {
         $filename = uniqid() . '_' . $_FILES['new_img']['name'];
-        move_uploaded_file($_FILES['new_img']['tmp_name'], _RECIPES_IMG_PATH_.$filename);
+        move_uploaded_file($_FILES['new_img']['tmp_name'], '../../uploads/card-img/'.$filename);
         $query= "UPDATE galery SET title=:title, image=:filename WHERE id=:galery_id";
 
         $res = $pdo->prepare($query);
@@ -38,7 +38,7 @@ if(isset($_POST['update_galery']))
         {
             if($_FILES['new_img']['name'] !='')
             {
-                move_uploaded_file($_FILES['new_img']['tmp_name'], _RECIPES_IMG_PATH_.$filename);
+                move_uploaded_file($_FILES['new_img']['tmp_name'], '../../uploads/card-img/'.$filename);
                 unlink("uploads/card-img/".$old_image);
                 header('location: galeryIndex.php');
             }
@@ -67,11 +67,11 @@ if(isset($_POST['update_galery']))
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Gloock&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
   <body class="bodyForm">
     <main>
-    <?php include ('lib/message.php') ?>
+    <?php include ('../../lib/message.php') ?>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
@@ -79,7 +79,7 @@ if(isset($_POST['update_galery']))
                         <div class="card-header">
                             <h3>Modifier plat galerie
                                 <a href="galeryIndex.php" class=" bttn btn float-end">Retour</a>
-                                <a href="index.php" class=" bttn btn float-end">Accueil</a>
+                                <a href="/index.php" class=" bttn btn float-end">Accueil</a>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -134,4 +134,4 @@ if(isset($_POST['update_galery']))
             </div>
         </div>
     </main>
-    <?php require_once('templates/footer.php') ;?>
+    <?php require_once('../../templates/footer.php') ;?>

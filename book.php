@@ -3,8 +3,9 @@
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
 
+    // SECURE ACCESS TO BOOK PAGE FOR USER
     if(!isset($_SESSION['user_id'])) {
-        header('location: login.php');
+        header('location: user/login.php');
     }
 
     $errors = [];
