@@ -115,7 +115,7 @@ if(isset($_POST['update_galery']))
                                         </div>
 
                                         <div class="mb-3">
-                                            <button type="submit" name="update_galery" class="bttn btn btn-primary">Mettre à jour le plat</button>
+                                            <button type="submit" name="update_galery" class="bttn btn">Mettre à jour le plat</button>
                                         </div>
 
                                     </form>

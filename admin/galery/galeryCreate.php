@@ -80,7 +80,7 @@ if (!$errors) {
                                     <input type="file" name="file" id="file" required>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="save_galery" class=" bttn btn btn-primary">Ajouter le plat à la galerie</button>
+                                    <button type="submit" name="save_galery" class=" bttn btn">Ajouter le plat à la galerie</button>
                                 </div>
 
                             </form>

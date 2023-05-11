@@ -71,7 +71,7 @@ if(isset($_POST['update_capacity']))
                                         </div>
 
                                         <div class="mb-3">
-                                            <button type="submit" name="update_capacity" class="bttn btn btn-primary">Mettre à jour</button>
+                                            <button type="submit" name="update_capacity" class="bttn btn">Mettre à jour</button>
                                         </div>
                                     </form>
 

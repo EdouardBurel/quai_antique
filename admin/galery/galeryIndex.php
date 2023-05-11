@@ -63,10 +63,10 @@
                                                 <td><?= $galery['title']; ?> </td>
                                                 <td ><?= $galery['image']; ?> </td>
                                                 <td>
-                                                    <a href="galeryView.php?id=<?= $galery['id']; ?>" class="btn btn-info btn-sm">View</a>
-                                                    <a href="galeryEdit.php?id=<?= $galery['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a href="galeryView.php?id=<?= $galery['id']; ?>" class="btn btn-info btn-sm">Consulter</a>
+                                                    <a href="galeryEdit.php?id=<?= $galery['id']; ?>" class="btn btn-warning btn-sm">Modifier</a>
                                                     <form action="../../lib/galery.php" method="POST" class="d-inline">
-                                                        <button type="submit" name="delete_galery" value="<?=$galery['id']; ?>" class="btn-delete btn btn-danger btn-sm">Delete</a>
+                                                        <button type="submit" name="delete_galery" value="<?=$galery['id']; ?>" class="btn-delete btn btn-danger btn-sm">Supprimer</a>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -81,7 +81,7 @@
                                 ?>
                             </tbody>
                         </table>
-                        <a href="galeryCreate.php" class="bttn btn btn-primary float-end">Ajouter un plat </a>
+                        <a href="galeryCreate.php" class="bttn btn float-end">Ajouter un plat </a>
                     </div>
                             
                         </div>

@@ -58,10 +58,9 @@
                                         <td ><?= $hour['dinner_hours']; ?> </td>
                                         <td><?= $hour['status']; ?> </td>
                                         <td>
-                                            <a href="hourView.php?id=<?= $hour['id']; ?>" class="btn btn-info btn-sm">View</a>
-                                            <a href="hourEdit.php?id=<?= $hour['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="hourEdit.php?id=<?= $hour['id']; ?>" class="btn btn-warning btn-sm">Modifier</a>
                                             <form action="../../lib/hour.php" method="POST" class="d-inline">
-                                                <button type="submit" name="delete_hour" value="<?=$hour['id']; ?>" class="btn-delete btn btn-danger btn-sm">Delete</a>
+                                                <button type="submit" name="delete_hour" value="<?=$hour['id']; ?>" class="btn-delete btn btn-danger btn-sm">Supprimer</a>
                                             </form>
                                         </td>
                                     </tr>
@@ -73,7 +72,7 @@
                                 ?>
                             </tbody>
                         </table>
-                        <a href="hourCreate.php" class="bttn btn btn-primary float-end">Ajouter horaire </a>
+                        <a href="hourCreate.php" class="bttn btn float-end">Ajouter horaire </a>
                     </div>
                             
                         </div>

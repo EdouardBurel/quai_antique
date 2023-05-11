@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restautant gastronomique du Chef Arnaud Michant à Chambery.">
     <script src="script.js" type="text/javascript" defer></script>
     <title>Quai Antique - Restaurant</title>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
@@ -62,7 +63,6 @@
                     </li>
                     <?php } ?>
                 </ul>
-
             </div>
         </nav>
     </header>

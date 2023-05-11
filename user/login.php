@@ -26,7 +26,7 @@
          if($res['role'] == 'admin'){
      
             $_SESSION['admin_id'] = $res['id'];
-            header('location:admin/admin.php');
+            header('location:/admin/admin.php');
    
          }elseif($res['role'] == 'user'){
    
