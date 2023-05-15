@@ -10,7 +10,6 @@ C’est pourquoi il a fait appel à l’agence web dont vous faites partie.
 
 >Dans le cadre de cette mission qui vous est affectée, vous aurez à créer une application web vitrine pour le Quai Antique avec ce goût de la qualité que recherche Arnaud Michant.
 
-
 ### Lien de la version en ligne du projet
 
     https://quai-antique-site-restaurant.herokuapp.com/
@@ -25,7 +24,7 @@ C’est pourquoi il a fait appel à l’agence web dont vous faites partie.
 
 ### Documentation ###
 
->  L'ensemble de la documentation se trouve dans le dossier "documentation" à la racine du projet, comprenant:
+> L’ensemble de la documentation se trouve dans le dossier "documentation" à la racine du projet, comprenant :
 - documentation technique
 - charte graphique
 - Script SQL (fichier format .txt)
@@ -51,7 +50,7 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 ### Création et alimentation de la base de données
 
-> La création et alimentation de la BDD a été effectué manuelement (script SQL). Vous trouverez ce script dans le fichier "SQL.txt",situé dans le dossier “Documentation”.
+> La création et alimentation de la BDD a été effectué manuellement (script SQL). Vous trouverez ce script dans le fichier "SQL.txt",situé dans le dossier “Documentation”.
 
 ### Accéder à l’administration / Sécurité
 
@@ -59,8 +58,8 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 ![code-extract](images/code-extract.png)
 
->Voici les identifiants admin pour accéder au panel d'amnistration:
--  Sur la page /login.php, ajouter les identifiants suivants: 
+>Voici les identifiants admin pour accéder au panel d’administration :
+-  Sur la page /login.php, ajouter les identifiants suivants : 
     - admin@admin.com  
     - mot de passe: admin1
 
@@ -74,21 +73,21 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 
 ### Définition des rôles
 
-> L’administrateur dispose d'un panel d'administration pour gérer: 
-- la galerie d'images de la page d'accueil (CRUD);
-- l'horaire du restautant;
-- gestion de la carte du restaurant;
+> L’administrateur dispose d'un panel d'administration pour gérer : 
+- la galerie d'images de la page d'accueil (CRUD) ;
+- l'horaire du restaurant ;
+- gestion de la carte du restaurant ;
 - ajuster le nombre de convives maximum du restaurant.
 
 > Le client connecté peut accéder à la page de réservation pour réserver une table.
 
 ### Page Menus
 
-> Tout visiteur peut consulter le carte du restaurant sur la page dédiée /menu.php.
-> Les plats sont listés dans des catégories comprenant les informations suivantes:
+> Tout visiteur peut consulter la carte du restaurant sur la page dédiée /menu.php.
+> Les plats sont listés dans des catégories comprenant les informations suivantes :
 - une image
 - un titre
-- une descrption
+- une description
 - un prix
 - une catégorie
 
@@ -96,23 +95,22 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 > La page présente également une catégorie formule menu (midi ou soir).
 
 ### Compréhension et Structure d'arborescence logique
-Le création de l'application se compose de plusieurs dossiers formant l'arborescence ci-dessous:
-- Le <ins>dossier admin</ins> regroupe toutes les fonctionnalités pour le panel d'amnistration;
-- Le <ins>dossier assets</ins> s'agit du CSS de l'application;
+La création de l'application se compose de plusieurs dossiers formant l'arborescence ci-dessous :
+- Le <ins>dossier admin</ins> regroupe toutes les fonctionnalités pour le panel d’administration ;
+- Le <ins>dossier assets</ins> s'agit du CSS de l’application ;
 - Le <ins>dossier lib</ins>regroupe l'ensemble du codage reparti par section ;
 - Le <ins>fichier index.php</ins> s'agit de la page principale.
-
 
 
 
 ### Fonctionnalités application
 
 > <ins>Page d'accueil</ins>:
-- Mise à dispotion d'un bouton flêche permettant de scroller vers la galerie.
+- Mise à disposition d'un bouton flèche permettant de scroller vers la galerie.
 - En survolant les photos de la galerie, le titre du plat s'affiche.
 - En cliquant sur le bouton “Réserver une table”, le client est redirigé vers la page book s'il est connecté.
 > <ins>Page Menus</ins>: 
 - Une fonction dynamique est affichée pour filtrer les plats et menus sans rechargement de la page.
 
-> <ins>Page Book (Réserver une table)</ins>:
-- Le restaurant est limité en nombre de convives (seuil gérer par l'administrateur). Lorsque le client choisit sa date de réservation  et clique sur la confirmation de réservation, un message d'alerte s"affiche si le restautant est complet sur le jour selectionné.
+> <ins>Page Book (Réserver une table) </ins> :
+- Le restaurant est limité en nombre de convives (seuil gérer par l'administrateur). Lorsque le client choisit sa date de réservation et clique sur la confirmation de réservation, un message d'alerte s’affiche si le restaurant est complet sur le jour sélectionné.
