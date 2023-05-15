@@ -60,9 +60,9 @@ git clone https://github.com/EdouardBurel/quai_antique.git
 ![code-extract](images/code-extract.png)
 
 >Voici les identifiants admin pour accéder au panel d'amnistration:
--  Sur la page /login.php, ajouter:
- email: admin@admin.com  
- mot de passe: admin1
+-  Sur la page /login.php, ajouter les identifiants suivants: 
+    - admin@admin.com  
+    - mot de passe: admin1
 
 ### Gestion des utilisateurs
 
