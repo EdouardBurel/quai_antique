@@ -111,6 +111,8 @@ Le création de l'application se compose de plusieurs dossiers formant l'arbores
 - Mise à dispotion d'un bouton flêche permettant de scroller vers la galerie.
 - En survolant les photos de la galerie, le titre du plat s'affiche.
 - En cliquant sur le bouton “Réserver une table”, le client est redirigé vers la page book s'il est connecté.
-> Page Menus: Une fonction dynamique est affichée pour filtrer les plats et menus sans rechargement de la page.
+> <ins>Page Menus</ins>: 
+- Une fonction dynamique est affichée pour filtrer les plats et menus sans rechargement de la page.
 
-> Page Book (Réserver une table): Le restaurant est limité en nombre de convives (seuil gérer par l'administrateur). Lorsque le client choisit sa date de réservation  et clique sur la confirmation de réservation, un message d'alerte s"affiche si le restautant est complet sur le jour selectionné.
+> <ins>Page Book (Réserver une table)</ins>:
+- Le restaurant est limité en nombre de convives (seuil gérer par l'administrateur). Lorsque le client choisit sa date de réservation  et clique sur la confirmation de réservation, un message d'alerte s"affiche si le restautant est complet sur le jour selectionné.
