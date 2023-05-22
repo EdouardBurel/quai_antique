@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="comments">Mention des allegies</label>
+                                <label for="comments">Mention des allergies</label>
                                 <input type="text" name="comments" id="comments" class="form-control">
                             </div>
                             <div class="mb-3">
