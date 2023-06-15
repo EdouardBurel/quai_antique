@@ -1,12 +1,8 @@
 <?php
     require_once('lib/session.php');
     require_once ('lib/config.php');
+    require_once ('lib/bookCode.php');
     require_once ('lib/pdo.php');
-
-    // SECURE ACCESS TO BOOK PAGE FOR USER
-    /*if(!isset($_SESSION['user_id'])) {
-        header('location: user/login.php');
-    }*/
 
     $errors = [];
     $messages = [];
@@ -18,38 +14,15 @@
         $time = $_POST['time'];
         $guests = $_POST['guests'];
         $comments = $_POST['comments'];
-      
-        // Check if the selected date has availability
-        $query = "SELECT SUM(guests) as total_guests FROM reservations WHERE date=:date";
-        $res = $pdo->prepare($query);
-        $res->bindParam(":date", $date);
-        $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        $total_guests = $row['total_guests'];
-      
-        if($total_guests + $guests <= 30) {
-      
-          // Insert the reservation into the database
-          $query = "INSERT INTO reservations (name, date, time, guests, comments) VALUES (:name, :date, :time, :guests, :comments)";
-          $res = $pdo->prepare($query);
-          $res->bindParam(":name", $name);
-          $res->bindParam(":date", $date);
-          $res->bindParam(":time", $time);
-          $res->bindParam(":guests", $guests);
-          $res->bindParam(":comments", $comments);
-          $res->execute();
-      
-          // Show a success message
-         $messages[] = "Merci pour votre réservation";
-      
+
+        if (checkAvailability($pdo, $date, $guests)) {
+            insertReservation($pdo, $name, $date, $time, $guests, $comments);
+            $messages[] = "Merci pour votre réservation";
         } else {
-          // Show an error message
-          echo "<script>alert('Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.');</script>";
-      
+            $errors[] = "Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.";
         }
-      }
-    
-    ?>
+    }   
+?>
 <!doctype html>
    <html lang="fr" class="htmlForm">
    <head>
