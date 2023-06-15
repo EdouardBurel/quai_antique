@@ -4,9 +4,9 @@
     require_once ('lib/pdo.php');
 
     // SECURE ACCESS TO BOOK PAGE FOR USER
-    if(!isset($_SESSION['user_id'])) {
+    /*if(!isset($_SESSION['user_id'])) {
         header('location: user/login.php');
-    }
+    }*/
 
     $errors = [];
     $messages = [];
@@ -81,17 +81,23 @@
 
                      <div class="card-body">
                             <?php
-                            $id = (int)$_SESSION['user_id'];
-                            $query = "SELECT * FROM users WHERE id = ?";
-                            $res = $pdo->prepare($query);
-                            $res->execute([$id]);
-
-                            $user = $res->fetch(PDO::FETCH_ASSOC);
-
-                            $reservationName = (string)$user['first_name'];
-                            $NumberPeople = (int)$user['Number_People'];
-                            $commentUser = (string) $user['Comments'];
-
+                            if (!isset($_SESSION['user_id'])) {
+                                $id = '';
+                                $reservationName = '';
+                                $NumberPeople = '';
+                                $commentUser = '';
+                            } else {
+                                $id = (int)$_SESSION['user_id'];
+                                $query = "SELECT * FROM users WHERE id = ?";
+                                $res = $pdo->prepare($query);
+                                $res->execute([$id]);
+                        
+                                $user = $res->fetch(PDO::FETCH_ASSOC);
+                        
+                                $reservationName = (string)$user['first_name'];
+                                $NumberPeople = (int)$user['Number_People'];
+                                $commentUser = (string) $user['Comments'];
+                            }                    
 
                             echo <<<HTML
                             <form method="POST" enctype="multipart/form-data">
