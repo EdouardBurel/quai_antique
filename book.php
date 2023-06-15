@@ -10,13 +10,14 @@
     if(isset($_POST['submit'])) {
 
         $name = $_POST['name'];
+        $email = $_POST['email'];
         $date = $_POST['date'];
         $time = $_POST['time'];
         $guests = $_POST['guests'];
         $comments = $_POST['comments'];
 
         if (checkAvailability($pdo, $date, $guests)) {
-            insertReservation($pdo, $name, $date, $time, $guests, $comments);
+            insertReservation($pdo, $name, $email, $date, $time, $guests, $comments);
             $messages[] = "Merci pour votre réservation";
         } else {
             $errors[] = "Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.";
@@ -59,6 +60,7 @@
                                 $reservationName = '';
                                 $NumberPeople = '';
                                 $commentUser = '';
+                                $email = '';
                             } else {
                                 $id = (int)$_SESSION['user_id'];
                                 $query = "SELECT * FROM users WHERE id = ?";
@@ -69,7 +71,8 @@
                         
                                 $reservationName = (string)$user['first_name'];
                                 $NumberPeople = (int)$user['Number_People'];
-                                $commentUser = (string) $user['Comments'];
+                                $commentUser = (string)$user['Comments'];
+                                $email = (string)$user['email'];
                             }                    
 
                             echo <<<HTML
@@ -78,6 +81,11 @@
                             <div class="mb-3">
                                 <label for="name">Nom de réservation</label>
                                 <input type="text" name="name" id="name" value="$reservationName" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name">Email</label>
+                                <input type="text" name="email" id="email" value="$email" class="form-control" required>
                             </div>
 
                             <div class="mb-3">

@@ -1,4 +1,5 @@
 <?php
+require_once ('pdo.php');
 
 function checkAvailability($pdo,$date, $guests)
 {
@@ -12,11 +13,12 @@ function checkAvailability($pdo,$date, $guests)
     return $total_guests + $guests <= 30;
 }
 
-function insertReservation($pdo, $name, $date, $time, $guests, $comments)
+function insertReservation($pdo, $email, $name, $date, $time, $guests, $comments)
 {
-    $query = "INSERT INTO reservations (name, date, time, guests, comments) VALUES (:name, :date, :time, :guests, :comments)";
+    $query = "INSERT INTO reservations (name, email, date, time, guests, comments) VALUES (:name, :email, :date, :time, :guests, :comments)";
     $res = $pdo->prepare($query);
     $res->bindParam(":name", $name);
+    $res->bindParam(":email", $email);
     $res->bindParam(":date", $date);
     $res->bindParam(":time", $time);
     $res->bindParam(":guests", $guests);
