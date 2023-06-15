@@ -31,39 +31,36 @@ function addUser($pdo, $first_name, $last_name, $email, $password, $numberPeople
     return ['errors' => $errors, 'messages' => $messages];
 }
 
-
-
 # LOGIN CODE
-if(isset($_POST['submit'])){
+function loginUser($pdo, $email, $password)
+{
+    $errors = [];
+    $messages = [];
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $query->bindValue('email', $email);
+    $query->execute();
+    $res = $query->fetch(PDO::FETCH_ASSOC);
 
-    $select = $pdo->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-    $select->execute([$email, $password]);
-    $row = $select->fetch(PDO::FETCH_ASSOC);
- 
-    if($select->rowCount() > 0){
- 
-       if($row['role'] == 'admin'){
- 
-          $_SESSION['admin_id'] = $row['id'];
-          header('location:admin/admin.php');
- 
-       }elseif($row['role'] == 'user'){
- 
-          $_SESSION['user_id'] = $row['id'];
-          header('location:index.php');
- 
-       }else{
-          $message[] = 'no user found!';
-       }
-       
-    }else{
-       $message[] = 'Incorrect email or password.';
+    if ($res) {
+        $passwordHash = $res['password'];
+        if (password_verify($password, $passwordHash)) {
+            $messages[] = "Connexion réussie";
+        } else {
+            $errors[] = 'Email ou mot de passe incorrect.';
+        }
+
+        if ($res['role'] == 'admin') {
+            $_SESSION['admin_id'] = $res['id'];
+            header('location:/admin/admin.php');
+        } elseif ($res['role'] == 'user') {
+            $_SESSION['user_id'] = $res['id'];
+            header('location:/book.php');
+        }
     }
- 
- }
+
+    return ['errors' => $errors, 'messages' => $messages];
+}
 
 # GALLERY CODE-----------------------------------------------------
 

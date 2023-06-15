@@ -4,7 +4,6 @@
     require_once ('lib/pdo.php');
     require_once ('lib/code.php');
 
-
     $errors = [];
     $messages = [];
     

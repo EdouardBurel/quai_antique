@@ -2,40 +2,20 @@
     require_once('../lib/session.php');
     require_once ('../lib/config.php');
     require_once ('../lib/pdo.php');
+    require_once ('../lib/code.php');
 
     $errors = [];
     $messages = [];
 
-    if(isset($_POST['submit'])){
-      $email= $_POST['email'];
+    if (isset($_POST['submit'])) {
+      $email = $_POST['email'];
       $password = $_POST['password'];
-
-      $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-      $query->bindValue('email', $email);
-      $query->execute();
-      $res = $query->fetch(PDO::FETCH_ASSOC);
-
-      if ($res) {
-         $passwordHash = $res['password'];
-         if (password_verify($password, $passwordHash)) {
-            $messages[] = "Connexion réussie";
-         } else {
-            $errors[] = 'Email ou mot de passe incorect.';
-         }
-
-         if($res['role'] == 'admin'){
-     
-            $_SESSION['admin_id'] = $res['id'];
-            header('location:/admin/admin.php');
-   
-         }elseif($res['role'] == 'user'){
-   
-            $_SESSION['user_id'] = $res['id'];
-            header('location:/book.php');
-
-         }
-      }
-   }
+  
+      $result = loginUser($pdo, $email, $password);
+  
+      $errors = $result['errors'];
+      $messages = $result['messages'];
+  }
 ?>
 <!doctype html>
    <html lang="fr" class="htmlForm">
