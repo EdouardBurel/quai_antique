@@ -39,7 +39,7 @@
   </div>
 
 </footer>
-</body>
 <script src="main.js"></script>
+</body>
 </body>
 </html>

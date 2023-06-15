@@ -1,7 +1,8 @@
 <?php
-    require_once ('templates/header.php');
     require_once('lib/category.php');
     require_once ('lib/menuCard.php');
+    require_once ('templates/header.php');
+
 ?>
     <main>
         <!-- START Cover : 1st section Page -->
@@ -49,7 +50,6 @@
             </div>
             <a href="book.php" class="button button-book">Réserver une table</a>
         </section>
-        <!-- END Programs -->
     </main>
         
     <?php

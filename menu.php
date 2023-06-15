@@ -1,7 +1,7 @@
 <?php
-  require_once ('templates/header.php');
   require_once('lib/category.php');
   require_once ('lib/menuCard.php');
+  require_once ('templates/header.php');
 
   $categories = getCategories($pdo);
 
