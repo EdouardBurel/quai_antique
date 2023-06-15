@@ -2,6 +2,8 @@
     require_once('lib/session.php');
     require_once ('lib/config.php');
     require_once ('lib/pdo.php');
+    require_once ('lib/code.php');
+
 
     $errors = [];
     $messages = [];
@@ -13,26 +15,11 @@
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $numberPeople = $_POST['numberPeople'];
         $comments = $_POST['comments'];
-
-        $query = $pdo->prepare("INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`,`role`,`Number_People`, `Comments` ) VALUES (:first_name, :last_name, :email, :password, :role, :numberPeople, :comments)");
-       
-        $role = 'user';
-        $query->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-        $query->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-        $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':password', $password, PDO::PARAM_STR);
-        $query->bindParam(':role', $role, PDO::PARAM_STR);
-        $query->bindParam(':numberPeople', $numberPeople, PDO::PARAM_INT);
-        $query->bindParam(':comments', $comments, PDO::PARAM_STR);
-
-        $res = $query->execute();
-
-        if ($res) {
-            $messages[] = "Merci pour votre inscription";
-        } else {
-            $errors[] = "Inscription échouée";
-        }
- 
+    
+        $result = addUser($pdo, $first_name, $last_name, $email, $password, $numberPeople, $comments);
+    
+        $errors = $result['errors'];
+        $messages = $result['messages'];
     }
 
 ?>
