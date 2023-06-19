@@ -34,33 +34,35 @@
             </a>
             <div class="navbar-links">
                 <ul>
-                    <?php foreach ($mainMenu as $key => $value) {?>
-                    <li>
-                        <a href="<?=$key; ?>" target="_self"><?=$value ;?></a>
-                    </li>
-                    <?php } ?>
-                    <?php if(!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id']) )   {?>
-                    <li>
-                        <a href="inscription.php" class="">S'inscrire</a>
-                    </li>
-                    <li>
-                        <a href="../user/login.php" class="">Se connecter</a>
-                    </li>
-                    <?php } ?>
-                    <?php if(isset($_SESSION['user_id']) )   {?>
-                    <li>
-                        <a href="../lib/logout.php" class="">Se déconnecter</a>
-                    </li>
-                    <?php } ?>
+                    <?php foreach ($mainMenu as $key => $value): ?>
+                        <li>
+                            <a href="<?= $key; ?>" target="_self"><?= $value; ?></a>
+                        </li>
+                    <?php endforeach; ?>
 
-                    <?php if(isset($_SESSION['admin_id']) )   {?>
-                    <li>
-                        <a href="admin/admin.php" class="">Espace admin</a>
-                    </li>
-                    <li>
-                        <a href="../lib/logout.php">Se déconnecter</a>
-                    </li>
-                    <?php } ?>
+                    <?php if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])): ?>
+                        <li>
+                            <a href="inscription.php" class="">S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="../user/login.php" class="">Se connecter</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li>
+                            <a href="../lib/logout.php" class="">Se déconnecter</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['admin_id'])): ?>
+                        <li>
+                            <a href="admin/admin.php" class="">Espace admin</a>
+                        </li>
+                        <li>
+                            <a href="../lib/logout.php">Se déconnecter</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

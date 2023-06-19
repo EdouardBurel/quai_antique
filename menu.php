@@ -71,5 +71,5 @@
 </main>
 
 <?php
-  require_once('templates/footerMain.php');
+  require_once('templates/footer.php');
 ?>
