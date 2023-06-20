@@ -13,14 +13,16 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit inventore officia provident cupiditate nemo eius nesciunt? Delectus incidunt minima tempore modi, adipisci itaque quidem distinctio ipsum, omnis officiis minus.</p>
     </div>
     <div class="listMenu">
-      <li data-filter=".All">La carte</li>
-      <li style="border-right: thick solid black;"></li>
-      <li data-filter=".Entrée">Entrées</li>
-      <li data-filter=".Plat">Plats</li>
-      <li data-filter=".Dessert">Desserts</li>
-      <br> <hr>
-      <li style="border-right: thick solid black;"></li>
-      <li data-filter=".Menus">Menus</li>
+      <ul class="menuItems">
+        <li data-filter=".All">La carte</li>
+        <li class="separator"></li>
+        <li data-filter=".Entrée">Entrées</li>
+        <li data-filter=".Plat">Plats</li>
+        <li data-filter=".Dessert">Desserts</li>
+        <br> <hr>
+        <li class="separator"></li>
+        <li data-filter=".Menus">Menus</li>
+      </ul>
     </div>
     <a href="book.php" class="button button-book" style="font-size: 1.5rem;margin: 1.5rem;font-family: 'Gloock', serif;padding: 10px 20px;">Réserver une table</a>
     <div class="contentMenu">

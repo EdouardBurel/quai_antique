@@ -27,7 +27,7 @@
 
         <!-- START Galery : 2nd section of page -->
         <section id="galery-pictures">
-            <div class="our-chef">
+            <div class="gallery">
                 <?php
                 $query = 'SELECT * FROM galery';
                 $res = $pdo->prepare($query);
@@ -39,7 +39,7 @@
                 <div class="item"> 
                     <div class="image">
                         <img src="<?=getRecipeImage($card['image']); ?>" alt="<?= $card['title']; ?>">
-                        <div class="chef-info">
+                        <div class="gallery-info">
                             <div>
                                 <h4><?= $card['title']; ?></h4>
                             </div>
