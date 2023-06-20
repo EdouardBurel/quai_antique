@@ -36,7 +36,7 @@
                         </h3>
                      </div>
                      <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST">
                            <div class="mb-3">
                                 <label for="first_name">Prénom</label>
                                 <input type="text" name="first_name" id="first_name" class="form-control" required>

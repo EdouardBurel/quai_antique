@@ -34,7 +34,7 @@
             if ($res->rowCount() > 0) {
               while ($card = $res->fetch(PDO::FETCH_ASSOC)) {
             ?>
-      <div class="boxMenu All .<?php foreach ($categories as $category) { ?> <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
+      <div class="boxMenu .<?php foreach ($categories as $category) { ?> <?php if ($card['category_id'] == $category['id']) { echo $category['name'];?>
               <?php } }?>">
         <div class="imageMenu">
           <img src="<?=getRecipeImage($card['image']); ?>" alt="<?= $card['title']; ?>">
@@ -69,6 +69,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </main>
 
