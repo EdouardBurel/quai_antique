@@ -18,7 +18,7 @@
         $comments = $_POST['comments'];
 
         if (checkAvailability($pdo, $date, $guests)) {
-            insertReservation($pdo, $name, $email, $date, $time, $guests, $comments);
+            insertReservation($pdo, $name, $date, $time, $guests, $comments, $email);
             $messages[] = "Merci pour votre réservation";
         } else {
             $errors[] = "Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.";
@@ -41,6 +41,11 @@
 
                      <div class="card-body">
                             <?php
+                            
+                            $query = "SELECT totalGuests FROM capacity";
+                            $res = $pdo->query($query);
+                            $totalGuests = $res->fetchColumn();
+
                             if (!isset($_SESSION['user_id'])) {
                                 $id = '';
                                 $reservationName = '';
@@ -70,13 +75,13 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="name">Email</label>
+                                <label for="email">Email</label>
                                 <input type="text" name="email" id="email" value="$email" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
                                     <label for="guests">Nombre de couverts</label>
-                                    <input type="number" name="guests" id="guests" value="$NumberPeople" min="1" max="30" class="form-control" required>
+                                    <input type="number" name="guests" id="guests" value="$NumberPeople" min="1" max="$totalGuests" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
