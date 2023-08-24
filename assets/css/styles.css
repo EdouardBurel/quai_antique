@@ -169,6 +169,26 @@ ul, ol {
     border-radius: 2rem;
 }
 
+/* PASSWORD TOGGLE*/
+
+.password-input {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-toggle i {
+    font-size: 18px;
+    color: #0f4454;
+}
+
+
 /* MOBILE 500px */
 @media (max-width: 975px) {
 

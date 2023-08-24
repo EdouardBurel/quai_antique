@@ -55,7 +55,12 @@
 
                             <div class="mb-3">
                                 <label for="password">Mot de passe</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
+                                <div class="password-input">
+                                    <input type="password" name="password" id="passwordInput" class="form-control" required>
+                                    <div class="password-toggle" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" id="eyeIcon"></i>
+                                    </div>
+                                </div>    
                             </div>
 
                             <div class="mb-3">

@@ -40,9 +40,14 @@
                            </div>
 
                            <div class="mb-3">
-                              <label for="password" class="form-label">Mot de passe</label>
-                              <input type="password" name="password" class="form-control">
-                           </div>
+                                <label for="password">Mot de passe</label>
+                                <div class="password-input">
+                                    <input type="password" name="password" id="passwordInput" class="form-control" required>
+                                    <div class="password-toggle" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" id="eyeIcon"></i>
+                                    </div>
+                                </div>    
+                            </div>
                            <div class="mb-3">
                               <button type="submit" name="submit" class="bttn btn">Connexion</button>
                            </div>
@@ -56,4 +61,22 @@
             </div>
          </div>
    </main>
+
+   <script>
+   function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("passwordInput");
+      var eyeIcon = document.getElementById("eyeIcon");
+
+      if (passwordInput.type === "password") {
+         passwordInput.type = "text";
+         eyeIcon.classList.remove("fa-eye");
+         eyeIcon.classList.add("fa-eye-slash");
+      } else {
+         passwordInput.type = "password";
+         eyeIcon.classList.remove("fa-eye-slash");
+         eyeIcon.classList.add("fa-eye");
+      }
+   }
+
+   </script>
       <?php require_once('../templates/footer.php') ;?>
