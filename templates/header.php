@@ -51,7 +51,7 @@
 
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li>
-                            <a href="../lib/logout.php" class="">Se déconnecter</a>
+                            <a href="../lib/logout.php" class="logout">Se déconnecter</a>
                         </li>
                     <?php endif; ?>
 

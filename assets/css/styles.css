@@ -164,6 +164,11 @@ ul, ol {
     margin-bottom: 50px;
 }
 
+.logout {
+    background-color: #cab5a7;
+    border-radius: 2rem;
+}
+
 /* MOBILE 500px */
 @media (max-width: 975px) {
 
