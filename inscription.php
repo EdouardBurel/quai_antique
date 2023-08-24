@@ -4,6 +4,7 @@
     require_once ('lib/pdo.php');
     require_once ('lib/code.php');
     require_once ('templates/headerBootstrap.php');
+    require_once ('lib/capacity.php');
 
     $errors = [];
     $messages = [];
@@ -59,7 +60,7 @@
 
                             <div class="mb-3">
                                 <label for="numberPeople">Nombre de convives par défaut</label>
-                                <input type="number" name="numberPeople" id="numberPeople" class="form-control">
+                                <input type="number" name="numberPeople" id="numberPeople" min="1" max="<?php echo $totalGuests; ?>" class="form-control">
                             </div>
 
                             <div class="mb-3">
