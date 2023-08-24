@@ -23,10 +23,9 @@ function getNumberCapacity(PDO $pdo) {
     return false; // Return a default value or handle the case where data is not available
 }
 
-// Assuming you have a valid PDO connection $pdo
 $totalGuests = getNumberCapacity($pdo);
 if ($totalGuests !== false) {
-    echo $totalGuests;
+    $totalGuests;
 } else {
     echo "Failed to fetch total guests.";
 }

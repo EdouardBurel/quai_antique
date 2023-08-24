@@ -4,6 +4,7 @@
     require_once ('lib/bookCode.php');
     require_once ('lib/pdo.php');
     require_once ('templates/headerBootstrap.php');
+    require_once ('lib/capacity.php');
 
     $errors = [];
     $messages = [];
@@ -76,8 +77,9 @@
 
                             <div class="mb-3">
                                     <label for="guests">Nombre de couverts</label>
-                                    <input type="number" name="guests" id="guests" value="$NumberPeople" min="1" max="30" class="form-control" required>
+                                    <input type="number" name="guests" id="guests" value="$NumberPeople" min="1" max="$totalGuests" class="form-control" required>
                             </div>
+                            
 
                             <div class="mb-3">
                                     <label for="date">Date</label>
