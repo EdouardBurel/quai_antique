@@ -1,12 +1,19 @@
 <?php
 require_once ('pdo.php');
 
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    $baseUrl = 'http://localhost'; // Update with your local URL
+} else {
+    $baseUrl = 'https://quai-antique-site-restaurant.herokuapp.com';
+}
+
 function getRecipeImage(string|null $image) {
-  if ($image === null) {
-      return _ASSETS_IMG_PATH_.'recipe_default.jpg';
-  } else {
-      return _RECIPES_IMG_PATH_.$image;
-  }
+    global $baseUrl;
+    if ($image === null) {
+        return $baseUrl . _ASSETS_IMG_PATH_ . 'recipe_default.jpg';
+    } else {
+        return $baseUrl . _RECIPES_IMG_PATH_ . $image;
+    }
 }
 
 // ADD A MENU CARD IN MENUS PAGE
