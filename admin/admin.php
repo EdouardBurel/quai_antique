@@ -6,7 +6,7 @@
 
    // SECURE ACCESS TO ADMIN PAGE
     if(!isset($_SESSION['admin_id'])) {
-            header('location: index.php');
+            header('location: /index.php');
         }
 ?>
 
