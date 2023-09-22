@@ -123,7 +123,7 @@ if (isset($_POST['submitReservation'])) {
                                     <input type="text" name="comments" id="comments" value="$commentUser" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="submitReservation" class="bttn btn">Réserver</button>
+                                    <button type="submit" name="submitReservation" class="bttn btn">Réserver la table</button>
                                 </div>
                             </form>
                             HTML;
