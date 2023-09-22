@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 <<<<<<< HEAD
-      <title>Quai Antique - Restaurant</title>
+      <title>Quai Antique - Restaurant Chef Arnaud Michaud </title>
 =======
       <title>Quai Antique</title>
 >>>>>>> 4f22ba191a6d1ecb562ee288d0d1fbad8390bae8
