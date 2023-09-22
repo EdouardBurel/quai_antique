@@ -1,48 +1,49 @@
 <?php
-    require_once('lib/session.php');
-    require_once ('lib/config.php');
-    require_once ('lib/bookCode.php');
-    require_once ('lib/pdo.php');
-    require_once ('templates/headerBootstrap.php');
-    require_once ('lib/capacity.php');
+require_once('lib/session.php');
+require_once('lib/config.php');
+require_once('lib/bookCode.php');
+require_once('lib/pdo.php');
+require_once('templates/headerBootstrap.php');
+require_once('lib/capacity.php');
 
-    $errors = [];
-    $messages = [];
+$errors = [];
+$messages = [];
 
-    if(isset($_POST['submit'])) {
+if (isset($_POST['submitReservation'])) {
 
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $date = $_POST['date'];
-        $time = $_POST['time'];
-        $guests = $_POST['guests'];
-        $comments = $_POST['comments'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+    $guests = $_POST['guests'];
+    $comments = $_POST['comments'];
 
-        if (checkAvailability($pdo, $date, $guests)) {
-            insertReservation($pdo, $name, $date, $time, $guests, $comments, $email);
-            $messages[] = "Merci pour votre réservation";
-        } else {
-            $errors[] = "Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.";
-        }
-    }   
+    if (checkAvailability($pdo, $date, $guests)) {
+        insertReservation($pdo, $name, $date, $time, $guests, $comments, $email);
+        $messages[] = "Merci pour votre réservation";
+    } else {
+        $errors[] = "Notre restaurant est complet ce jour-ci. Nous vous remercions de bien vouloir choisir une autre date.";
+    }
+}
 ?>
+
 <body class="bodyForm">
     <main>
-        <?php require_once ('lib/message.php'); ?>
-         <div class="container mt-4">
+        <?php require_once('lib/message.php'); ?>
+        <div class="container mt-4">
             <div class="row">
-               <div class="col-md-12">
-                  <div class="card">
+                <div class="col-md-12">
+                    <div class="card">
 
-                     <div class="card-header">
-                        <h3>Réservation
-                           <a href="index.php" class=" bttn btn float-end">Accueil</a>
-                        </h3>
-                     </div>
+                        <div class="card-header">
+                            <h3>Réservation
+                                <a href="index.php" class=" bttn btn float-end">Accueil</a>
+                            </h3>
+                        </div>
 
-                     <div class="card-body">
+                        <div class="card-body">
                             <?php
-                            
+
                             $query = "SELECT totalGuests FROM capacity";
                             $res = $pdo->query($query);
                             $totalGuests = $res->fetchColumn();
@@ -58,14 +59,14 @@
                                 $query = "SELECT * FROM users WHERE id = ?";
                                 $res = $pdo->prepare($query);
                                 $res->execute([$id]);
-                        
+
                                 $user = $res->fetch(PDO::FETCH_ASSOC);
-                        
+
                                 $reservationName = (string)$user['first_name'];
                                 $NumberPeople = (int)$user['Number_People'];
                                 $commentUser = (string)$user['Comments'];
                                 $email = (string)$user['email'];
-                            }                    
+                            }
 
                             echo <<<HTML
                             <form method="POST" enctype="multipart/form-data">
@@ -93,8 +94,8 @@
                             HTML;
                             ?>
 
-                                <?php
-                                echo <<<HTML
+                            <?php
+                            echo <<<HTML
                                 <div class="mb-3" id="sub_meal">
                                     <label for="time">Heure de réservation </label>
                                     <select type="time" id="time" name="time" class="form-control" required>
@@ -122,15 +123,15 @@
                                     <input type="text" name="comments" id="comments" value="$commentUser" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="submit" class="bttn btn">Réserver</button>
+                                    <button type="submit" name="submitReservation" class="bttn btn">Réserver</button>
                                 </div>
                             </form>
                             HTML;
                             ?>
-                     </div>            
-                  </div>       
-               </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
     </main>
-    <?php require_once ('templates/footer.php'); ?>
+    <?php require_once('templates/footer.php'); ?>

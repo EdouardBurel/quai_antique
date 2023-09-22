@@ -434,6 +434,13 @@ ul, ol {
     font-family: 'Gloock', serif;
 }
 
+a.button.button-book-menu {
+    font-size: 1.8rem;
+    margin: 1.5rem;
+    font-family: 'Gloock', serif;
+    padding: 10px 20px
+}
+
 .button-book:hover {
     background-position: left;
 }

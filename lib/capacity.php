@@ -10,17 +10,10 @@ function updateCapacity(PDO $pdo, int $capacity_id, int $totalGuests) {
 };
 
 function getNumberCapacity(PDO $pdo) {
-    $query = "SELECT totalGuests FROM capacity"; // Select only the 'totalGuests' column
-    $res = $pdo->query($query); // Use query() instead of prepare() since there are no bound parameters
+    $query = "SELECT totalGuests FROM capacity"; // Select the 'totalGuests' value
+    $result = $pdo->query($query);
     
-    if ($res !== false) {
-        $row = $res->fetch(PDO::FETCH_ASSOC); // Fetch the first row
-        if ($row !== false) {
-            return $row['totalGuests']; // Return the 'totalGuests' value
-        }
-    }
-    
-    return false; // Return a default value or handle the case where data is not available
+    return $result ? $result->fetchColumn() : false; // Fetch the 'totalGuests' value or return false if not found
 }
 
 $totalGuests = getNumberCapacity($pdo);
