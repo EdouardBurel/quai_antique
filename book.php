@@ -73,12 +73,12 @@ if (isset($_POST['submitReservation'])) {
                             <input type="hidden" name="id" value="$id">
                             <div class="mb-3">
                                 <label for="name">Nom de réservation</label>
-                                <input type="text" name="name" id="name" value="$reservationName" class="form-control" required>
+                                <input type="text" name="name" id="name" value="$reservationName" class="form-control" autocomplete="off" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" value="$email" class="form-control" required>
+                                <input type="text" name="email" id="email" value="$email" class="form-control" autocomplete="off" required>
                             </div>
 
                             <div class="mb-3">
@@ -120,7 +120,7 @@ if (isset($_POST['submitReservation'])) {
 
                                 <div class="mb-3">
                                     <label for="comments">Mention des allergies / Commentaires</label>
-                                    <input type="text" name="comments" id="comments" value="$commentUser" class="form-control">
+                                    <input type="text" name="comments" id="comments" value="$commentUser" class="form-control" autocomplete="off">
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" name="submitReservation" class="bttn btn">Réserver la table</button>
